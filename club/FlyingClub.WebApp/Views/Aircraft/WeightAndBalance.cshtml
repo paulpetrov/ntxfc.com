@@ -1,0 +1,191 @@
+﻿@model FlyingClub.WebApp.Models.WeightAndBalanceViewModel
+@{
+    ViewBag.Title = "Weight and Balance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script language="JavaScript">
+<!--
+    function doCalc() {
+        var form = document.forms[0];
+        var ew = form.EmptyWeight.value;
+        var ewarm = form.EmptyCG.value;
+        var ewmom = (ew * ewarm);
+        form.ewmom.value = Math.round(ewmom * 10) / 10;
+
+        var fr1 = form.fr1.value;
+        var fr1arm = form.FrontArm.value;
+        var fr1mom = fr1 * fr1arm;
+        form.fr1mom.value = Math.round(fr1mom * 10) / 10;
+
+        var fuel = form.fuel.value * 6;
+        var fuelarm = form.FuelArm.value;
+        var fuelmom = fuel * fuelarm;
+        form.fuelmom.value = Math.round(fuelmom * 10) / 10;
+
+        var r1 = 0;
+        var r1mom = 0;
+        if (!(form.r1 === undefined))
+        {
+            r1 = form.r1.value;
+            var r1arm = form.RearArm.value;
+            r1mom = r1 * r1arm;
+            form.r1mom.value = Math.round(r1mom * 10) / 10;
+        }
+
+        var bag1 = form.bag1.value;
+        var bagarm1 = form.Baggage1Arm.value;
+        var bagmom1 = bag1 * bagarm1;
+        form.bagmom1.value = Math.round(bagmom1 * 10) / 10;
+
+        var bagmom2 = 0;
+        var bag2 = 0;
+        if (!(form.bag2 === undefined)) 
+        {
+            bag2 = form.bag2.value;
+            var bagarm2 = form.Baggage2Arm.value;
+            var bagmom2 = bag2 * bagarm2;
+            form.bagmom2.value = Math.round(bagmom2 * 10) / 10;
+        }
+
+        var totmom = -1 * (-ewmom - fr1mom - fuelmom - r1mom - bagmom1 - bagmom2);
+        form.totmom.value = Math.round(totmom * 10) / 10;
+
+        var totwt = -1 * (-ew - fr1 - fuel - r1 - bag1 - bag2);
+        form.totwt.value = Math.round(totwt);
+
+        var totarm = totmom / totwt;
+        form.totarm.value = Math.round(totarm * 100) / 100;
+
+        if (fuel > form.FuelCapacity) {
+            {
+                alert("Too much fuel - enter fuel in gallons")
+            }
+        }
+    }
+// -->
+</SCRIPT>
+
+<h3>@Model.RegistrationNumber Weight and Balance</h3>
+
+@if (Model.IsDataAvailable)
+{
+<div>
+DISCLAIMER: TO BE USED FOR PLANNING PURPOSES ONLY. <br />  IT IS THE RESPONSIBILITY OF THE PILOT IN COMMAND TO CONDUCT A WEIGHT AND BALANCE CALCULATION BEFORE FLIGHT.
+</div>
+<br />
+<br />
+    using (Html.BeginForm("wb", "Aircraft", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+   <table cellpadding="0" cellspacing="0" border="0" align="center">
+        <tr>			
+                <td>
+                <b>@Model.RegistrationNumber @Model.TypeDesignation</b><br /><br />
+                Empty weight: @Model.EmptyWeight lbs<br />
+                Max gross weight: @Model.MaxGrossWeight lbs<br />
+                Useful load: @Model.UsefulLoad lbs<br />
+                Full fuel payload: @Model.PayloadWithFullFuel lbs <br />
+                Empty CG: @Model.EmptyCG	
+                        <noscript>
+                        <p><i><font color="#cc0000">** Javascript is required to use this calculator. Yours seems to be disabled. **</font></i>
+                        </noscript>
+                        <table border="4" cellspacing="0" cellpadding="0" bgcolor="#dddddd" align="center">     
+                          <tr>
+                            <th></th>
+                            <th>Load</th>
+                            <th>Arm (inches)</th>
+                            <th>Moment (in-lb)</th>
+                          </tr>                         
+                                <tr>
+                                        <td>&nbsp;<b>Empty Weight (lbs)</b></td>
+                                        <td width="60">
+                                            @Html.DisplayFor(model => model.EmptyWeight)
+                                            @Html.HiddenFor(model => model.EmptyWeight)
+                                        </td>
+                                        <td width="60">
+                                            @Html.DisplayFor(model => model.EmptyCG)
+                                            @Html.HiddenFor(model => model.EmptyCG)
+                                        </td>
+                                        <td width="90" bgcolor="#cccccc"><input type="text" name="ewmom" readonly="readonly" disabled="disabled" size="9" style="width:90px" class="nav" /></td>
+                                </tr>
+                                <tr>
+                                        <td class="nav">&nbsp;<b>Fuel (gals)<br />&nbsp;tabs: @Model.FuelTabCapacity gal<br />&nbsp;max: @Model.FuelCapacity gal</b>@Html.HiddenFor(model => model.FuelCapacity)</td>
+                                        <td align="center" bgcolor="#ffff33"><input type="text" size="7" name="fuel" value="" style="width:60px" class="nav" /></td>
+                                        <td align="center">
+                                            @Html.DisplayFor(model => model.FuelArm)
+                                            @Html.HiddenFor(model => model.FuelArm)
+                                        </td>
+                                        <td align="center" class="nav" bgcolor="#cccccc"><input type="text" name="fuelmom" readonly="readonly" disabled="disabled" size="9" style="width:90px" class="nav" /></td>
+                                </tr>
+                                <tr>
+                                        <td class="nav">&nbsp;<b>Front Seat (lbs)</b></td>
+                                        <td align="center" class="wbInput" bgcolor="#ffff33"><input type="text" size="7" name="fr1" value="" style="width:60px" class="nav" /></td>
+                                        <td align="center" class="nav">
+                                            @Html.DisplayFor(model => model.FrontArm)
+                                            @Html.HiddenFor(model => model.FrontArm, new { name = "fr1arm" })
+                                        </td>
+                                        <td align="center" class="nav" bgcolor="#cccccc"><input type="text" name="fr1mom" readonly="readonly" disabled="disabled" style="width:90px" /></td>
+                                </tr>
+@if (Model.RearArm > 0)
+{ 
+                                <tr>
+                                        <td class="nav">&nbsp;<b>Rear Seat (lbs)</b></td>
+                                        <td align="center" class="wbInput" bgcolor="#ffff33"><input type="text" size="7" name="r1" value="" style="width:60px" class="nav" /></td>
+                                        <td align="center" class="nav">
+                                            @Html.DisplayFor(model => model.RearArm)
+                                            @Html.HiddenFor(model => model.RearArm, new { name = "r1arm" })
+                                        </td>
+                                        <td align="center" class="nav" bgcolor="#cccccc"><input type="text" name="r1mom" readonly="readonly" disabled="disabled"  style="width:90px" class="nav" /></td>
+                                </tr>
+}                                                                        
+                                <tr>
+                                        <td class="nav">&nbsp;<b>Baggage Area 1 (lbs)<br />&nbsp; max: @Model.Baggage1Max lbs</b></td>
+                                        <td align="center" class="wbInput" bgcolor="#ffff33"><input type="text" size="7" name="bag1" value="" style="width:60px" class="nav" /></td>
+                                        <td align="center" class="nav">
+                                            @Html.DisplayFor(model => model.Baggage1Arm)
+                                            @Html.HiddenFor(model => model.Baggage1Arm, new { name = "bagarm1" })   
+                                        </td>
+                                        <td align="center" class="nav" bgcolor="#cccccc"><input type="text" name="bagmom1" readonly="readonly" disabled="disabled" style="width:90px" class="nav" /></td>
+                                </tr>
+@if (Model.Baggage2Arm > 0)
+{ 
+                                <tr>
+                                        <td class="nav">&nbsp;<b>Baggage Area 2 (lbs)<br />&nbsp; max: @Model.Baggage2Max lbs</b></td>
+                                        <td align="center" class="wbInput" bgcolor="#ffff33"><input type="text" size="7" name="bag2" value="" style="width:60px" class="nav" /></td>
+                                        <td align="center" class="nav">
+                                            @Html.DisplayFor(model => model.Baggage2Arm)
+                                            @Html.HiddenFor(model => model.Baggage2Arm, new { name = "bagarm2" })   
+                                        </td>
+                                        <td align="center" class="nav" bgcolor="#cccccc"><input type="text" name="bagmom2" readonly="readonly" disabled="disabled" style="width:90px" class="nav" /></td>
+                                </tr>
+}
+                                <tr bgcolor="#ffcc33">
+                                        <td>&nbsp;<b>Gross Weight:<br />&nbsp;max: @Model.MaxGrossWeight lbs</b></td>
+                                        <td align="center"><input type="text" size="7" name="totwt" readonly="readonly" disabled="disabled" style="width:60px" class="nav" /></td>
+                                        <td class="nav">&nbsp;</td>
+                                        <td class="nav" align="center" bgcolor="#cccccc"><input type="text" name="totmom" readonly="readonly" disabled="disabled" style="width:90px" class="nav" /></td>
+                                </tr>
+                                <tr bgcolor="#ffcc33">
+                                        <td>&nbsp;<b>Center of Gravity:</b></td>
+                                        <td class="nav" align="center"><input type="text" size="7" name="totarm" readonly="readonly" disabled="disabled" style="width:60px" class="nav" /></td>
+                                        <td class="nav">&nbsp;</td>
+                                        <td class="nav" bgcolor="#cccccc">&nbsp;</td>
+                                </tr>
+                                <tr bgcolor="#aaaaaa">
+                                        <td colspan="4" class="nav" align="right">
+                                                <input type="button" value="&nbsp;Calculate&nbsp;" onclick="doCalc()" class="nav" /> &nbsp;&nbsp; 
+                                                <input type="reset" value="Reset form" class="nav" />
+                                        </td>
+                                </tr>
+                        </table>
+                </td>
+        </tr>
+</table>
+    }
+}
+else
+{ 
+    <div>Sorry, there's no weight and balance data available for this aircraft.</div>
+}
+
+

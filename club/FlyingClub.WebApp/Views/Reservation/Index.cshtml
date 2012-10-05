@@ -1,0 +1,19 @@
+﻿@model FlyingClub.WebApp.Models.ReservationIndexViewModel
+
+@{
+    ViewBag.Title = "Reservation: Home";
+}
+
+@Html.PageTitle(PageTitleImage.Reservation, "Reservations", "Home")
+<p>@Html.MvcSiteMap().SiteMapPath()</p>
+
+<p>
+    @Html.ActionLink("Create New Reservation", "Create")
+</p>
+
+@Html.Partial("ReservationList", Model.ReservationList)
+
+@if (User.IsInRole("Instructor"))
+{
+    @Html.Partial("StudentReservationList", Model.StudentReservationList)
+}

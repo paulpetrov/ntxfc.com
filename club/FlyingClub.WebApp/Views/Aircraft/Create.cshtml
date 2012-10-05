@@ -1,0 +1,163 @@
+﻿@model FlyingClub.WebApp.Models.AircraftEditViewModel
+
+@{
+    ViewBag.Title = "Aircraft Edit: New Aircraft";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.PageTitle(PageTitleImage.Aircraft, "Aircraft Edit", "New Aircraft")
+<p>@Html.MvcSiteMap().SiteMapPath()</p>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Aircraft</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RegistrationNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RegistrationNumber)
+            @Html.ValidationMessageFor(model => model.RegistrationNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Make)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Make)
+            @Html.ValidationMessageFor(model => model.Make)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Model)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Model)
+            @Html.ValidationMessageFor(model => model.Model)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Year)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Year)
+            @Html.ValidationMessageFor(model => model.Year)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TypeDesignation, "Type Designation")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TypeDesignation)
+            @Html.ValidationMessageFor(model => model.TypeDesignation)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MaxGrossWeight, "Max Gross Weight")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MaxGrossWeight)
+            @Html.ValidationMessageFor(model => model.MaxGrossWeight)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FuelCapacity, "Fuel Capacity")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FuelCapacity)
+            @Html.ValidationMessageFor(model => model.FuelCapacity)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UsefulLoad, "Useful Load")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UsefulLoad)
+            @Html.ValidationMessageFor(model => model.UsefulLoad)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CruiseSpeed, "Cruise Speed")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CruiseSpeed)
+            @Html.ValidationMessageFor(model => model.CruiseSpeed)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MaxRange)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MaxRange)
+            @Html.ValidationMessageFor(model => model.MaxRange)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BasedAt, "Base:")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BasedAt)
+            @Html.ValidationMessageFor(model => model.BasedAt)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EquipmentList)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EquipmentList)
+            @Html.ValidationMessageFor(model => model.EquipmentList)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CheckoutRequirements)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CheckoutRequirements)
+            @Html.ValidationMessageFor(model => model.CheckoutRequirements)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HourlyRate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HourlyRate)
+            @Html.ValidationMessageFor(model => model.HourlyRate)
+        </div>
+
+                <div class="editor-label">
+            @Html.LabelFor(model => model.Status)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Status, Model.StatusValues)
+            @Html.ValidationMessageFor(model => model.Status)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

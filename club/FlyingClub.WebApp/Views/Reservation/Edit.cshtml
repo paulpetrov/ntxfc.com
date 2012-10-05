@@ -1,0 +1,101 @@
+﻿@model FlyingClub.WebApp.Models.ReservationViewModel
+
+@{
+    ViewBag.Title = String.Concat("Reservation Edit: ", Model.AircraftNumber);
+}
+
+@Html.PageTitle(PageTitleImage.Reservation, "Reservation Edit", Model.AircraftNumber)
+<p>@Html.MvcSiteMap().SiteMapPath()</p>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Reservation</legend>
+
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.MemberId)
+        @Html.HiddenFor(model => model.UrlReferrer)
+
+        <div class="editor-label">
+            Member
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.Member.FirstName) @Html.DisplayFor(model => model.Member.LastName)
+        </div>
+
+        <div class="editor-label">
+            Aircraft
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.AircraftId, new SelectList(Model.AircraftList, "Id", "RegistrationNumber", Model.AircraftId))
+            @Html.ValidationMessageFor(model => model.AircraftId)
+        </div>
+
+        <div class="editor-label">
+            <label for="member">Instructor</label>
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.InstructorId, new SelectList(Model.InstructorList, "Id", "FullName", Model.InstructorId))
+            @Html.ValidationMessageFor(model => model.InstructorId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StartDate)
+        </div>
+        @if (Model.StartDate < DateTime.Now)
+        {
+        <div class="editor-field">
+            @Model.StartDate
+            @Html.HiddenFor(model => model.StartDate)
+            @Html.HiddenFor(model => model.StartTime)
+            @Html.ValidationMessageFor(model => model.StartDate)
+        </div>
+        }
+        else
+        {
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StartDate)
+            @Html.DropDownListFor(model => model.StartTime, Model.TimeList)
+            @Html.ValidationMessageFor(model => model.StartDate)
+        </div>
+        }
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EndDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EndDate)
+            @Html.DropDownListFor(model => model.EndTime, Model.TimeList)
+            @Html.ValidationMessageFor(model => model.EndDate)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to Details", "Details", new { id = Model.Id }) |
+    @Html.ActionLink("Back to My Reservations", "Index") |
+    @Html.ActionLink("Back to Week View", "AircraftByWeek", new { aircraftId = Model.AircraftId, startDate = Model.StartDate.ToString("MM/dd/yyyy")})
+</div>
+
+<script>
+    $(function () {
+        $("#StartDate").datepicker({
+            showButtonPanel: true,
+            onSelect: function (dateText, inst) {
+                if (!$("#EndDate").is(':blank')) {
+                    var startDate = Date.parse(dateText);
+                    var endDate = Date.parse($("#EndDate").val());
+                    if (startDate > endDate) { $("#EndDate").val(dateText); }
+                }
+            }
+        });
+        $("#EndDate").datepicker({ showButtonPanel: true });
+    });
+</script>

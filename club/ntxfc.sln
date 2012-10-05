@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlyingClub.Common", "FlyingClub.Common\FlyingClub.Common.csproj", "{664D5716-5712-4CF7-9215-2546ACCF98AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlyingClub.BusinessLogic", "FlyingClub.BusinessLogic\FlyingClub.BusinessLogic.csproj", "{9AA1C74D-961F-45C0-BB22-582F172112ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlyingClub.Data.Model", "FlyingClub.Data.Model\FlyingClub.Data.Model.csproj", "{E8524330-D355-48CC-BD29-F20C438A22D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlyingClub.WebApp", "FlyingClub.WebApp\FlyingClub.WebApp.csproj", "{ED399067-C933-4DDE-8691-4F68B838F999}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{5412A6F4-40E1-41C0-A9AC-7EE03D8A36A7}"
+	ProjectSection(SolutionItems) = preProject
+		Database\ntxfc_main_asp.sql = Database\ntxfc_main_asp.sql
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlyingClub.Data.Repository", "FlyingClub.Data.Repository\FlyingClub.Data.Repository.csproj", "{E44492C5-1CD9-4841-8FCB-3F98EC7C99F3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{664D5716-5712-4CF7-9215-2546ACCF98AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{664D5716-5712-4CF7-9215-2546ACCF98AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{664D5716-5712-4CF7-9215-2546ACCF98AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{664D5716-5712-4CF7-9215-2546ACCF98AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AA1C74D-961F-45C0-BB22-582F172112ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AA1C74D-961F-45C0-BB22-582F172112ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AA1C74D-961F-45C0-BB22-582F172112ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AA1C74D-961F-45C0-BB22-582F172112ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8524330-D355-48CC-BD29-F20C438A22D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8524330-D355-48CC-BD29-F20C438A22D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8524330-D355-48CC-BD29-F20C438A22D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8524330-D355-48CC-BD29-F20C438A22D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED399067-C933-4DDE-8691-4F68B838F999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED399067-C933-4DDE-8691-4F68B838F999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED399067-C933-4DDE-8691-4F68B838F999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED399067-C933-4DDE-8691-4F68B838F999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E44492C5-1CD9-4841-8FCB-3F98EC7C99F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E44492C5-1CD9-4841-8FCB-3F98EC7C99F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E44492C5-1CD9-4841-8FCB-3F98EC7C99F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E44492C5-1CD9-4841-8FCB-3F98EC7C99F3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

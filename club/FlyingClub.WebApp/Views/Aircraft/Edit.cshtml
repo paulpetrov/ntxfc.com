@@ -1,0 +1,241 @@
+﻿@model FlyingClub.WebApp.Models.AircraftEditViewModel
+
+@{
+    ViewBag.Title = String.Concat("Aircraft Edit: ", Model.RegistrationNumber);
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.PageTitle(PageTitleImage.Aircraft, "Aircraft Edit", Model.RegistrationNumber)
+<p>@Html.MvcSiteMap().SiteMapPath()</p>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.Id)
+    <table width="100%" border="0" class="noborder" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="noborder">
+                <fieldset>
+                    <legend>Registration Data</legend>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.RegistrationNumber, "Registration Number")
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.RegistrationNumber)
+                        @Html.ValidationMessageFor(model => model.RegistrationNumber)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Make)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Make)
+                        @Html.ValidationMessageFor(model => model.Make)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Model)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Model)
+                        @Html.ValidationMessageFor(model => model.Model)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Year)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Year)
+                        @Html.ValidationMessageFor(model => model.Year)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.TypeDesignation)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.TypeDesignation)
+                        @Html.ValidationMessageFor(model => model.TypeDesignation)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Name)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Name)
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </fieldset>
+            </td>
+            <td class="noborder">
+                <fieldset>
+                    <legend>Technical Specifications</legend>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.MaxGrossWeight, "Max Gross Weight")
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.MaxGrossWeight)
+                        @Html.ValidationMessageFor(model => model.MaxGrossWeight)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.FuelCapacity, "Fuel Capacity")
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.FuelCapacity)
+                        @Html.ValidationMessageFor(model => model.FuelCapacity)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.UsefulLoad, "Useful Load")
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.UsefulLoad)
+                        @Html.ValidationMessageFor(model => model.UsefulLoad)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.CruiseSpeed, "Cruise Speed")
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.CruiseSpeed)
+                        @Html.ValidationMessageFor(model => model.CruiseSpeed)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.MaxRange, "Max Range")
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.MaxRange)
+                        @Html.ValidationMessageFor(model => model.MaxRange)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Description)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Description)
+                        @Html.ValidationMessageFor(model => model.Description)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.EquipmentList, "Equipment")
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.EquipmentList)
+                        @Html.ValidationMessageFor(model => model.EquipmentList)
+                    </div>
+                </fieldset>
+            </td>
+        </tr>
+        <tr>
+            <td class="noborder">
+                <fieldset>
+                    <legend>Club Data</legend>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.BasedAt, "Based at:")
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.BasedAt)
+                        @Html.ValidationMessageFor(model => model.BasedAt)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.CheckoutRequirements, "Checkout Requirements")
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.CheckoutRequirements)
+                        @Html.ValidationMessageFor(model => model.CheckoutRequirements)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.OperationalNotes, "Operational Notes")
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.OperationalNotes)
+                        @Html.ValidationMessageFor(model => model.OperationalNotes)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.StatusNotes, "Maintenance Notes")
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.StatusNotes)
+                        @Html.ValidationMessageFor(model => model.StatusNotes)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.HourlyRate, "Hourly Rate")
+                    </div>
+                    <div class="editor-field">
+                    @if (User.IsInRole("Admin"))
+                    { 
+                        @Html.EditorFor(model => model.HourlyRate)
+                        @Html.ValidationMessageFor(model => model.HourlyRate)
+                    }
+                    else
+                    {
+                        @Html.DisplayTextFor(model => model.HourlyRate) 
+                        @Html.HiddenFor(model => model.HourlyRate)
+                    }
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Status)
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownListFor(model => model.Status, Model.StatusValues)
+                        @Html.ValidationMessageFor(model => model.Status)
+                    </div>
+                </fieldset>
+            </td>
+            <td class="noborder">
+                <fieldset>
+                    <legend>Owners</legend>
+                    <br />
+                    @if (User.IsInRole("Admin"))
+                    { 
+                        @Html.ActionLink("Add", "AddOwner", new { aircraftId = Model.Id })
+                    }               
+                    <table>
+                    @foreach (var owner in Model.Owners)
+                    {
+                       <tr>
+                            
+                            @if (User.IsInRole("Admin"))
+                            { 
+                               <td> @owner.Name</td><td>@Html.ActionLink("Remove", "RemoveOwnerConfirm", new { aircraftId = Model.Id, ownerId = owner.OwnerId })</td>
+                            }
+                            else
+                            {
+                               <td> @owner.Name</td><td>@Html.ActionLink("Contact", "ListOwners", new { id = Model.Id })</td>
+
+                            }                                 
+                       </tr>
+                    }
+                    </table>
+                </fieldset>
+                <fieldset>
+                    <legend>Images</legend>
+                    <br />
+                    <table>
+                    <tr>
+                        <td>Preview</td>
+                        <td>Title</td>
+                        <td>Type</td>
+                        <td>File Name</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var image in Model.Images)
+                    { 
+                       <tr>
+                        <td><img src="@Url.Content(System.Configuration.ConfigurationManager.AppSettings["AircraftImages"] + "/" + image.FileName_Small)" /></td>
+                        <td>@image.Title</td>
+                        <td>@image.Type</td>
+                        <td>@image.FileName</td>
+                        <td>@Html.ActionLink("Remove", "RemoveImage", new { imageId = image.Id, aircraftId = Model.Id, tailNumber = Model.RegistrationNumber })</td>
+                       </tr>
+                    }
+                    </table>
+                    <br />
+                    <div>
+                        @Html.ActionLink("Add", "AddImage", new { aircraftId = Model.Id, tailNumber = Model.RegistrationNumber })
+                    </div>
+                </fieldset>
+            </td>
+        </tr>
+    </table>
+    
+    <p>
+        <input type="submit" value="Save" />
+    </p>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

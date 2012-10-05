@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<wb>
+  <aircraft id="N8185E">
+    <EmptyWeight>1788</EmptyWeight>
+    <MaxGrossWeight>2750</MaxGrossWeight>
+    <FuelMax>72</FuelMax>
+    <FuelTabs>50</FuelTabs>
+    <Baggage1Max>200</Baggage1Max>
+    <arms>
+      <EmptyCG>87.58</EmptyCG>
+      <Fuel>95.0</Fuel>
+      <Front1>80.5</Front1>
+      <Rear>118.1</Rear>
+      <Baggage1>142.8</Baggage1>
+    </arms>
+  </aircraft>
+</wb>

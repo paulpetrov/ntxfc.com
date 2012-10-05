@@ -1,0 +1,43 @@
+﻿@model List<FlyingClub.WebApp.Models.PilotReviewItemViewModel>
+
+@{
+    ViewBag.Title = "Review Pilots";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Review Pilots</h2>
+
+<table>
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>Flight Review</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{ 
+    <tr>
+        <td>
+           @Html.DisplayFor(modelItem => item.PilotName)
+        </td>
+        @if (item.IsOverdue)
+        { 
+        <td style="background-color:Red">
+            @Html.DisplayFor(modelItem => item.LastReviewDate)
+        </td>
+        }
+        else
+        { 
+         <td>
+            @Html.DisplayFor(modelItem => item.LastReviewDate)
+        </td>
+        }
+        <td>
+        @Html.HiddenFor(modelItem => item.PilotId)
+            @Html.ActionLink("Review", "PilotReview", new { memberId = item.PilotId })
+        </td>
+    </tr>
+}
+</table>

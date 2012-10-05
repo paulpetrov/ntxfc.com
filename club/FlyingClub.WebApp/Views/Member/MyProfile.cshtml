@@ -1,0 +1,86 @@
+﻿@model FlyingClub.WebApp.Models.MemberViewModel
+
+@{
+    ViewBag.Title = String.Concat("Member: ", Model.FirstName, " ", Model.LastName);
+}
+
+@Html.PageTitle(PageTitleImage.Member, "Member", String.Format("{0} {1}", Model.FirstName, Model.LastName))
+<p>@Html.MvcSiteMap().SiteMapPath()</p>
+
+<fieldset>
+    <legend>Member</legend>
+
+    <div class="display-label">First Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FirstName)
+    </div>
+
+    <div class="display-label">Last Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastName)
+    </div>
+
+    <div class="display-label">Phone</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Phone)
+    </div>
+
+    <div class="display-label">Alt Phone</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AltPhone)
+    </div>
+
+    <div class="display-label">Address Line 1</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AddressLine_1)
+    </div>
+
+    <div class="display-label">Address Line 2</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AddressLine_2)
+    </div>
+
+    <div class="display-label">City</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.City)
+    </div>
+
+    <div class="display-label">Zip</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Zip)
+    </div>
+
+    <div class="display-label">MemberSince</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MemberSince)
+    </div>
+
+    <div class="display-label">Last Medical</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastMedical)
+    </div>
+
+    <div class="display-label">Total Hours</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TotalHours)
+    </div>
+
+    <div class="display-label">Retract Hours</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RetractHours)
+    </div>
+
+    <div class="display-label">Emergency Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmergencyName)
+    </div>
+
+    <div class="display-label">Emergency Phone</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmergencyPhone)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "EditMyProfile") |
+    @Html.ActionLink("Back to Home", "Index", "Home")
+</p>

@@ -1,0 +1,54 @@
+﻿@model FlyingClub.WebApp.Models.AircraftByWeekViewModel
+        
+@{
+    ViewBag.Title = "Reservation: Aircraft Schedule Display";
+}
+
+@Html.PageTitle(PageTitleImage.Reservation, "Reservations", "Aircraft Schedule Display")
+<p>@Html.ActionLink("Home", "Index", "Home") &gt; @Html.ActionLink("Reservations", "Index", "Reservation") &gt; @Html.ActionLink("Aircraft Availability", "Select", new { aircraftId = @Model.AircraftId }) &gt; Aircraft Schedule By Week</p>
+
+<h3>@Model.Aircraft.RegistrationNumber</h3>
+<p>
+    @Html.ActionLink("Create New Reservation", "Create", new { aircraftId = @Model.AircraftId, startDate = @Model.StartDate.ToString("MM/dd/yyyy") })
+</p>
+<p>
+    @Html.ActionLink("<< Previous Seven Days", "AircraftByWeek", new { aircraftId = @Model.AircraftId, startDate = @Model.PreviousStartDate.ToString("MM/dd/yyyy") })
+    &nbsp;
+    @Html.ActionLink("Today", "AircraftByWeek", new { aircraftId = @Model.AircraftId, startDate = DateTime.Now.ToString("MM/dd/yyyy") })
+    &nbsp;
+    @Html.ActionLink("Next Seven Days >>", "AircraftByWeek", new { aircraftId = @Model.AircraftId, startDate = @Model.NextStartDate.ToString("MM/dd/yyyy") })
+</p>
+<table>
+    <tr>
+        <th></th>
+        @foreach (var item in Model.DateList)
+        {
+            <th>
+                <a href="@Url.Action("AircraftByDay", new { aircraftId = @Model.AircraftId, date = @item.ToString("MM/dd/yyyy") })">@item.ToString("dddd")<br />@item.ToString("MM/dd/yyyy")</a>
+            </th>    
+        }
+        <th></th>
+    </tr>
+    <tr>
+        <th>Time</th>
+        <th><a href="@Url.Action("Status", "Aircraft", new { id = @Model.AircraftId })" class="@Model.Aircraft.Status">@Model.Aircraft.Status</a></th>
+        <th><a href="@Url.Action("Status", "Aircraft", new { id = @Model.AircraftId })" class="@Model.Aircraft.Status">@Model.Aircraft.Status</a></th>
+        <th><a href="@Url.Action("Status", "Aircraft", new { id = @Model.AircraftId })" class="@Model.Aircraft.Status">@Model.Aircraft.Status</a></th>
+        <th><a href="@Url.Action("Status", "Aircraft", new { id = @Model.AircraftId })" class="@Model.Aircraft.Status">@Model.Aircraft.Status</a></th>
+        <th><a href="@Url.Action("Status", "Aircraft", new { id = @Model.AircraftId })" class="@Model.Aircraft.Status">@Model.Aircraft.Status</a></th>
+        <th><a href="@Url.Action("Status", "Aircraft", new { id = @Model.AircraftId })" class="@Model.Aircraft.Status">@Model.Aircraft.Status</a></th>
+        <th><a href="@Url.Action("Status", "Aircraft", new { id = @Model.AircraftId })" class="@Model.Aircraft.Status">@Model.Aircraft.Status</a></th>
+        <th>Time</th>
+    </tr>
+    @foreach (var time in Model.TimeList)
+    {
+    <tr>
+        <td>@time.ToString("HH:mm")</td>
+        @foreach (var date in Model.DateList)
+        {
+            <td>@(new HtmlString(Model.GetReservationFromDateTime(date, time)))</td>
+        }   
+        <td>@time.ToString("HH:mm")</td>
+    </tr>
+    }
+</table>

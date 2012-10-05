@@ -1,0 +1,92 @@
+﻿@model FlyingClub.WebApp.Models.EditSquawkViewModel
+
+@{
+    ViewBag.Title = String.Concat("Squawk Edit: ", Model.RegistrationNumber);
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.PageTitle(PageTitleImage.Squawk, "Squawk Edit", Model.RegistrationNumber)
+<p>@Html.MvcSiteMap().SiteMapPath()</p>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Squawk</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PostedOn, "Posted On")
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.PostedOn)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PostedBy, "Posted By")
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.PostedBy)
+            @Html.ValidationMessageFor(model => model.PostedBy)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Subject)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Subject)
+            @Html.ValidationMessageFor(model => model.Subject)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ResolutionNotes)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ResolutionNotes)
+            @Html.ValidationMessageFor(model => model.ResolutionNotes)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ResolvedBy)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ResolvedBy)
+            @Html.ValidationMessageFor(model => model.ResolvedBy)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ResolvedOn)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ResolvedOn)
+            @Html.ValidationMessageFor(model => model.ResolvedOn)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Status)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Status, new SelectList(Model.StatusValues))
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

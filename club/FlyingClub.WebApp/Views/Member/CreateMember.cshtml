@@ -1,0 +1,207 @@
+﻿@model FlyingClub.WebApp.Models.EditMemberViewModel
+
+@{
+    ViewBag.Title = "Member Edit: New Member";
+}
+
+@Html.PageTitle(PageTitleImage.Member, "Member Edit", "New Member")
+<p>@Html.MvcSiteMap().SiteMapPath()</p>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+<table width="100%" border="0" style="border-style:none">
+    <tr>
+        <td>
+        <fieldset>
+        <legend>Contact Information</legend>
+
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.PrimaryEmail)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Username, "Username")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Username)
+            @Html.ValidationMessageFor(model => model.Username)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FirstName, "First Name")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LastName, "Last Name")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LastName)
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Phone, "Primary Phone")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Phone)
+            @Html.ValidationMessageFor(model => model.Phone)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AltPhone, "Alternative Phone")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AltPhone)
+            @Html.ValidationMessageFor(model => model.AltPhone)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AddressLine_1, "Address Line 1")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AddressLine_1)
+            @Html.ValidationMessageFor(model => model.AddressLine_1)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AddressLine_2, "Address Line 2")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AddressLine_2)
+            @Html.ValidationMessageFor(model => model.AddressLine_2)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.City, "City")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.City)
+            @Html.ValidationMessageFor(model => model.City)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.State, "State")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.State)
+            @Html.ValidationMessageFor(model => model.State)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Zip, "ZIP")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Zip)
+            @Html.ValidationMessageFor(model => model.Zip)
+        </div>
+        </fieldset>
+        </td>
+        <td>
+         <fieldset>
+        <legend>Pilot Information</legend>
+               <div class="editor-label">
+            @Html.LabelFor(model => model.MemberSince, "Member Since")
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.MemberSince)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LastMedical, "Last Medical Date")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LastMedical)
+            @Html.ValidationMessageFor(model => model.LastMedical)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TotalHours, "Total Hours")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TotalHours)
+            @Html.ValidationMessageFor(model => model.TotalHours)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RetractHours, "Retract Hours")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RetractHours)
+            @Html.ValidationMessageFor(model => model.RetractHours)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EmergencyName, "Emergency Contact Name")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EmergencyName)
+            @Html.ValidationMessageFor(model => model.EmergencyName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EmergencyPhone, "Emergency Contact Phone")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EmergencyPhone)
+            @Html.ValidationMessageFor(model => model.EmergencyPhone)
+        </div>
+        </fieldset>
+
+        @if (User.IsInRole(FlyingClub.Common.UserRoles.Admin.ToString()))
+        { 
+         <fieldset>
+         <legend>Club Membership</legend>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Status, "Status")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.Status, new SelectList(Model.StatusValues, Model.Status))
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ClubRoles, "Club Roles")
+            </div>
+            <div class="editor-field">
+                @Html.CheckBoxListFor(model => model.MemberRoles, new MultiSelectList(Model.ClubRoles, "Id", "Description"))
+            </div> 
+        </fieldset>
+        }
+        </td>
+     </tr>
+     <tr>
+     <td>
+        @if (User.IsInRole(FlyingClub.Common.UserRoles.Admin.ToString()))
+        {
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+     
+     </td>
+     <td align="right">
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+     </td>
+     </tr>
+</table>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script>
+    $(function () {
+        $("#LastMedical").datepicker({ showButtonPanel: true });
+    });
+</script>
+
+

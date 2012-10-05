@@ -1,0 +1,54 @@
+﻿@model List<FlyingClub.WebApp.Models.AircraftOwnersListViewModel>
+
+@{
+    ViewBag.Title = "Aircraft : Owners";
+}
+
+@Html.PageTitle(PageTitleImage.Aircraft, "Aircraft", "Owners")
+<p>@Html.MvcSiteMap().SiteMapPath()</p>
+
+<p>
+@if (User.IsInRole(FlyingClub.Common.UserRoles.Admin.ToString()))
+{ 
+    @Html.ActionLink("Add New Member", "Create")
+}    
+</p>
+
+<table>
+    <tr>
+        <th>Tail Number</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Alt Phone</th>
+        <th>Email</th>
+        <th>Alt Email</th>
+        @if (User.IsInRole(FlyingClub.Common.UserRoles.Admin.ToString()))
+        {
+        <th></th>
+        }
+    </tr>
+
+    @foreach (var ac in Model)
+    { 
+        foreach (var owner in ac.Owners)
+        {
+            <tr>
+                <td>@ac.RegistrationNumber</td>
+                <td>@owner.DisplayName</td>
+                <td>@owner.Phone</td>
+                <td>@owner.AltPhone</td>
+                <td><a href="mailto:@owner.PrimaryEmail">@owner.PrimaryEmail</a></td>
+                <td><a href="mailto:@owner.SecondaryEmail">@owner.PrimaryEmail</a></td>
+                @if (User.IsInRole(FlyingClub.Common.UserRoles.Admin.ToString()))
+                {
+                <td>
+                    @Html.ActionLink("Details", "Details", "Member", new { id = owner.Id }, null) |
+                    @Html.ActionLink("Edit", "Edit", "Member", new { id = owner.Id }, null) |
+                    @Html.ActionLink("Delete", "Delete", "Member", new { id = owner.Id }, new { OnClick = "return confirm('Are you sure you want to delete?');" })
+                </td>
+                }
+            </tr>
+        }
+    }
+</table>
+

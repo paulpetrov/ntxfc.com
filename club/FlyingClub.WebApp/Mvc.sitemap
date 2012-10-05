@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0" enableLocalization="true">
+  <mvcSiteMapNode title="Home" controller="Home" action="Index">
+    <mvcSiteMapNode title="Aircraft" controller="Aircraft" action="Index">
+      <mvcSiteMapNode title="New Aircraft" controller="Aircraft" action="Create" />
+      <mvcSiteMapNode title="Edit Aircraft" controller="Aircraft" action="Edit" />
+      <mvcSiteMapNode title="Details" controller="Aircraft" action="Details" />
+      <mvcSiteMapNode title="Owners" controller="Aircraft" action="ListOwners" />
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="Accounts" controller="Account" action="Index">
+      <mvcSiteMapNode title="New Account" controller="Account" action="Create" />
+      <mvcSiteMapNode title="Edit Account" controller="Account" action="Edit" />
+      <mvcSiteMapNode title="Details" controller="Account" action="Details" />
+      <mvcSiteMapNode title="Change Password" controller="Account" action="ChangePassword" />
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="Members" controller="Member" action="Index">
+      <mvcSiteMapNode title="New Member" controller="Member" action="Create" />
+      <mvcSiteMapNode title="Edit Member" controller="Member" action="Edit" />
+      <mvcSiteMapNode title="Details" controller="Member" action="Details" />
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="Squawks" controller="Squawk" action="ListActiveSquawks">
+      <mvcSiteMapNode title="New Squawk" controller="Squawk" action="Create" />
+      <mvcSiteMapNode title="Edit Squawk" controller="Squawk" action="Edit" />
+      <mvcSiteMapNode title="Details" controller="Squawk" action="Details" />
+      <mvcSiteMapNode title="Aircraft Squawks" controller="Squawk" action="GetSquawksForAircraft" />
+      <mvcSiteMapNode title="Resolve Squawk" controller="Squawk" action="ResolveSquawk" />
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="Reservations" controller="Reservation" action="Index">
+      <mvcSiteMapNode title="New Reservation" controller="Reservation" action="Create" />
+      <mvcSiteMapNode title="Edit Reservation" controller="Reservation" action="Edit" />
+      <mvcSiteMapNode title="Details" controller="Reservation" action="Details" />
+      <mvcSiteMapNode title="Aircraft Availability" controller="Reservation" action="Select" />
+      <mvcSiteMapNode title="Aircraft Status" controller="Aircraft" action="Status" />
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="Instructors" controller="Member" action="ListInstructors">
+      <mvcSiteMapNode title="Instructor" controller="Instructor" action="Create" />
+    </mvcSiteMapNode>
+  </mvcSiteMapNode>
+</mvcSiteMap>

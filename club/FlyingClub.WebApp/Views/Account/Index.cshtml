@@ -1,0 +1,55 @@
+﻿@model List<FlyingClub.WebApp.Models.AccountViewModel>
+
+@{
+    ViewBag.Title = "Account: Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.PageTitle(PageTitleImage.Member, "Account", "Home")
+<p>@Html.MvcSiteMap().SiteMapPath()</p>
+
+<p>@if (User.IsInRole(FlyingClub.Common.UserRoles.Admin.ToString()))
+{ 
+    @Html.ActionLink("Add New Account", "Create")
+}</p>
+
+<table>
+    <tr>
+        <th>PIN</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemberPIN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+        @if (User.IsInRole(FlyingClub.Common.UserRoles.Admin.ToString()))
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = item.LoginId }) @:|
+            @Html.ActionLink("Details", "Details", new { id = item.LoginId }) @:|
+            @Html.ActionLink("Delete", "Delete", new { id = item.LoginId }, new { OnClick = "return confirm('Are you sure you want to delete?');" })
+        }
+        else if (User.IsInRole(FlyingClub.Common.UserRoles.AircraftOwner.ToString()))
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = item.LoginId }) @:|
+            @Html.ActionLink("Details", "Details", new { id = item.LoginId })
+        }
+        else
+        { 
+            @Html.ActionLink("Details", "Details", new { id = item.LoginId })
+        }
+        </td>
+    </tr>
+}
+</table>

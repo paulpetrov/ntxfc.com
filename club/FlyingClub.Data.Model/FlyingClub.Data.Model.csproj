@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E8524330-D355-48CC-BD29-F20C438A22D9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FlyingClub.Data.Model</RootNamespace>
+    <AssemblyName>FlyingClub.Data.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccessDbImporter.cs" />
+    <Compile Include="Entities\Aircraft.cs" />
+    <Compile Include="Entities\AircraftImage.cs" />
+    <Compile Include="Entities\FlightReview.cs" />
+    <Compile Include="Entities\InstructorAuthorization.cs" />
+    <Compile Include="Entities\InstructorData.cs" />
+    <Compile Include="Entities\Login.cs" />
+    <Compile Include="Entities\Member.cs" />
+    <Compile Include="Entities\PilotCheckout.cs" />
+    <Compile Include="Entities\Reservation.cs" />
+    <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\Squawk.cs" />
+    <Compile Include="Entities\SquawkComment.cs" />
+    <Compile Include="Entities\StageCheck.cs" />
+    <Compile Include="External\CpSession.cs" />
+    <Compile Include="External\UserActivation.cs" />
+    <Compile Include="External\UserField.cs" />
+    <Compile Include="External\ExternalDbContext.cs" />
+    <Compile Include="External\Session.cs" />
+    <Compile Include="External\User.cs" />
+    <Compile Include="Mappings\AircraftMapping.cs" />
+    <Compile Include="Mappings\AircraftImageMapping.cs" />
+    <Compile Include="Mappings\FlightReviewMapping.cs" />
+    <Compile Include="Mappings\InstructorAuthorizationMapping.cs" />
+    <Compile Include="Mappings\InstructorDataMapping.cs" />
+    <Compile Include="Mappings\LoginMapping.cs" />
+    <Compile Include="Entities\NtxfcDbContext.cs" />
+    <Compile Include="Mappings\PilotCheckoutMapping.cs" />
+    <Compile Include="Mappings\MemberMapping.cs" />
+    <Compile Include="Mappings\ReservationMapping.cs" />
+    <Compile Include="Mappings\RoleMapping.cs" />
+    <Compile Include="Mappings\SquawkCommentMapping.cs" />
+    <Compile Include="Mappings\SquawkMapping.cs" />
+    <Compile Include="Mappings\StageCheckMapping.cs" />
+    <Compile Include="NtxfcDbContextInitializer.cs" />
+    <Compile Include="OldSchema\NtfcDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NtfcDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="OldSchema\NtfcDataSet.xsc">
+      <DependentUpon>NtfcDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="OldSchema\NtfcDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>NtfcDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="OldSchema\NtfcDataSet.xss">
+      <DependentUpon>NtfcDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FlyingClub.Common\FlyingClub.Common.csproj">
+      <Project>{664D5716-5712-4CF7-9215-2546ACCF98AE}</Project>
+      <Name>FlyingClub.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

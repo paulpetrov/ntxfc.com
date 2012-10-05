@@ -1,0 +1,98 @@
+﻿@model FlyingClub.WebApp.Models.InstructorViewModel
+
+@{
+    ViewBag.Title = "Instructor Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.PageTitle(PageTitleImage.Member, "Instructor", Model.FullName)
+<p>@Html.MvcSiteMap().SiteMapPath()</p>
+
+<table>
+<tr>
+<td>
+<fieldset>
+    <legend>Contact Information</legend>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FullName)
+    </div>
+
+    <div class="display-label">Email</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">Phone</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Phone)
+    </div>
+
+    <div class="display-label">Alternative Phone</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AltPhone)
+    </div>
+</fieldset>
+</td>
+<td>
+<fieldset>
+    <legend>Instructor Information</legend>
+
+@if (User.IsInRole(FlyingClub.Common.UserRoles.Admin.ToString()))
+{ 
+    <div class="display-label">Certificate Number</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CeritifcateNumber)
+    </div>
+}
+
+    <div class="display-label">Instructs in:</div>    
+    @foreach (var ac in Model.AuthorizedAircraft)
+    { 
+        <div class="display-field">@ac.RegistrationNumber</div>
+    }
+    <div class="display-label">Ratings</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Ratings)
+    </div>
+
+    <div class="display-label">Instruct On Weekends</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.InstructOnWeekends)
+    </div>
+
+    <div class="display-label">Instruct On Weekdays</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.InstructOnWeekdays)
+    </div>
+
+    <div class="display-label">Instruct On Weekday Nights</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.InstructOnWeekdayNights)
+    </div>
+
+    <div class="display-label">Checkouts and Annuals</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AvailableForCheckoutsAnnuals)
+    </div>
+
+    <div class="display-label">Authorized for stage checks</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DesignatedForStageChecks)
+    </div>
+
+    <div class="display-label">Comments</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Comments)
+    </div>
+    
+</fieldset>
+</td>
+</tr>
+</table>
+@if (User.IsInRole(FlyingClub.Common.UserRoles.Admin.ToString()))
+{ 
+    @Html.ActionLink("Manage Instructors", "ManageInstructors", "Instructor")
+}
+

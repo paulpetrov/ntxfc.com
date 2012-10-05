@@ -1,0 +1,29 @@
+﻿@model FlyingClub.WebApp.Models.AircraftOwnerHomeViewModel
+
+@{
+    ViewBag.Title = "Aircraft Owner Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Aircraft Owner Options</h2>
+
+<table style="width: 100%;" class="dashboard">
+    <tr>
+        <td>
+            <h2 class="aircraft">Manage Aircraft Fleet</h2>
+            <table>
+                @foreach (var ac in Model.Aircraft)
+                { 
+                    <tr>
+                        <td>
+                            @ac.RegistrationNumber
+                        </td>
+                        <td>
+                            @Html.ActionLink("Update Aircraft", "Edit", "Aircraft", new { id = ac.Id }, null) | @Html.ActionLink("Squawks", "GetSquawksForAircraft", "Squawk", new { id = ac.Id }, null)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </td>
+    </tr>
+</table>

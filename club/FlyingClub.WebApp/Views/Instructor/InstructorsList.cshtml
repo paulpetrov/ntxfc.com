@@ -1,0 +1,68 @@
+﻿@model IEnumerable<FlyingClub.WebApp.Models.MemberListItemViewModel>
+
+@{
+    ViewBag.Title = "Club Instructors";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Club Instructors</h2>
+<p>
+@*@if (User.IsInRole(FlyingClub.Common.UserRoles.Admin.ToString()))
+{ 
+    @Html.ActionLink("Add New Instructor", "AddInstructor")
+} *@   
+</p>
+<table>
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Email
+        </th>
+        <th>Alt. Email</th>
+        <th>
+            Phone
+        </th>
+        <th>
+            Alt. Phone
+        </th>
+        <th>
+            City
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrimaryEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecondaryEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AltPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+        @Html.ActionLink("Details", "InstructorDetails", "Instructor", new { memberId = item.Id }, null)
+            @if (User.IsInRole(FlyingClub.Common.UserRoles.Admin.ToString()))
+            {
+                @:|
+                @Html.ActionLink("Update", "UpdateInstructor", "Instructor", new { id = item.Id }, null) @:|
+                @Html.ActionLink("Remove", "RemoveInstructor", "Instructor", new { id = item.Id }, null)
+            }
+        </td>
+    </tr>
+}
+</table>

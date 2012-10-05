@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Administration Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Admin Options</h1>
+<table style="width: 100%;" class="dashboard">
+    <tr>
+        <td>
+            <h2 class="aircraft">Aircraft</h2>
+            <ul>
+                <li>@Html.ActionLink("Add New Aircraft", "Create", "Aircraft")</li>
+                <li>@Html.ActionLink("Manage Aircraft", "Index", "Aircraft")</li>
+            </ul>
+        </td>
+        <td>
+            <h2 class="message">Member Messages</h2>
+            <ul>
+                <li>@Html.ActionLink("Send Emails", "SendMassEmail", "Admin")</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h2 class="account">Membership</h2>
+            <ul>
+                <li>@Html.ActionLink("Add New Member", "Create", "Account")</li>
+                <li>@Html.ActionLink("Manage Accounts", "Index", "Account")</li>
+                <li>@Html.ActionLink("Manage Membership", "Index", "Member")</li>
+            </ul>
+        </td>
+        <td>
+            <h2 class="notams">Club Notams</h2>
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h2 class="instructor">Instructors</h2>
+            <ul>
+                <li>@Html.ActionLink("Manage Instructors", "ManageInstructors", "Instructor")</li>
+            </ul>
+        </td>
+        <td>
+            <h2 class="schedule">Schedule</h2>
+        </td>
+    </tr>
+</table>
+

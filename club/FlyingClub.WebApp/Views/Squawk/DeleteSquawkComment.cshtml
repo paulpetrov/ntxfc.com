@@ -1,0 +1,25 @@
+﻿@model FlyingClub.WebApp.Models.SquawkCommentViewModel
+
+@{
+    ViewBag.Title = "Delete Squawk Comment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete Squawk Comment</h2>
+@using (Html.BeginForm()) 
+{
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.SquawkId)
+<p>
+     Are you sure to delete squawk comment below?
+</p>
+<fieldset>
+<legend>Comment</legend>
+<div>@Model.Text</div>
+</fieldset>
+
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to Squawk", "Details", new { id = Model.SquawkId })
+    </p>
+}

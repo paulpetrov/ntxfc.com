@@ -1,0 +1,1174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NtxfcMain.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="NtxfcMainStoreContainer">
+          <EntitySet Name="aircraft" EntityType="NtxfcMain.Store.aircraft" store:Type="Tables" Schema="ntxfc_main" />
+          <EntitySet Name="aircraftimage" EntityType="NtxfcMain.Store.aircraftimage" store:Type="Tables" Schema="ntxfc_main" />
+          <EntitySet Name="aircraftowner" EntityType="NtxfcMain.Store.aircraftowner" store:Type="Tables" store:Schema="ntxfc_main" store:Name="aircraftowner">
+            <DefiningQuery>SELECT
+      `aircraftowner`.`OwnerId`, 
+      `aircraftowner`.`AircraftId`
+      FROM `aircraftowner` AS `aircraftowner`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="instructorinfo" EntityType="NtxfcMain.Store.instructorinfo" store:Type="Tables" store:Schema="ntxfc_main" store:Name="instructorinfo">
+            <DefiningQuery>SELECT
+      `instructorinfo`.`InstructorId`, 
+      `instructorinfo`.`CertificateNumber`, 
+      `instructorinfo`.`Ratings`
+      FROM `instructorinfo` AS `instructorinfo`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="instructortime" EntityType="NtxfcMain.Store.instructortime" store:Type="Tables" store:Schema="ntxfc_main" store:Name="instructortime">
+            <DefiningQuery>SELECT
+      `instructortime`.`InstructorId`, 
+      `instructortime`.`MemberId`
+      FROM `instructortime` AS `instructortime`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="instructor_aircraft" EntityType="NtxfcMain.Store.instructor_aircraft" store:Type="Tables" store:Schema="ntxfc_main" store:Name="instructor_aircraft">
+            <DefiningQuery>SELECT
+      `instructor_aircraft`.`InstructorId`, 
+      `instructor_aircraft`.`AircraftId`
+      FROM `instructor_aircraft` AS `instructor_aircraft`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="login" EntityType="NtxfcMain.Store.login" store:Type="Tables" Schema="ntxfc_main" />
+          <EntitySet Name="member" EntityType="NtxfcMain.Store.member" store:Type="Tables" Schema="ntxfc_main" />
+          <EntitySet Name="membercheckout" EntityType="NtxfcMain.Store.membercheckout" store:Type="Tables" Schema="ntxfc_main" />
+          <EntitySet Name="member_role" EntityType="NtxfcMain.Store.member_role" store:Type="Tables" store:Schema="ntxfc_main" store:Name="member_role">
+            <DefiningQuery>SELECT
+      `member_role`.`MemberId`, 
+      `member_role`.`RoleId`
+      FROM `member_role` AS `member_role`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="reservation" EntityType="NtxfcMain.Store.reservation" store:Type="Tables" Schema="ntxfc_main" />
+          <EntitySet Name="role" EntityType="NtxfcMain.Store.role" store:Type="Tables" Schema="ntxfc_main" />
+          <EntitySet Name="squawk" EntityType="NtxfcMain.Store.squawk" store:Type="Tables" Schema="ntxfc_main" />
+          <EntitySet Name="squawkcomment" EntityType="NtxfcMain.Store.squawkcomment" store:Type="Tables" Schema="ntxfc_main" />
+          <AssociationSet Name="aircraftimage_ibfk_1" Association="NtxfcMain.Store.aircraftimage_ibfk_1">
+            <End Role="aircraft" EntitySet="aircraft" />
+            <End Role="aircraftimage" EntitySet="aircraftimage" />
+          </AssociationSet>
+          <AssociationSet Name="aircraftowner_ibfk_1" Association="NtxfcMain.Store.aircraftowner_ibfk_1">
+            <End Role="member" EntitySet="member" />
+            <End Role="aircraftowner" EntitySet="aircraftowner" />
+          </AssociationSet>
+          <AssociationSet Name="aircraftowner_ibfk_2" Association="NtxfcMain.Store.aircraftowner_ibfk_2">
+            <End Role="aircraft" EntitySet="aircraft" />
+            <End Role="aircraftowner" EntitySet="aircraftowner" />
+          </AssociationSet>
+          <AssociationSet Name="instructortime_ibfk_1" Association="NtxfcMain.Store.instructortime_ibfk_1">
+            <End Role="member" EntitySet="member" />
+            <End Role="instructortime" EntitySet="instructortime" />
+          </AssociationSet>
+          <AssociationSet Name="instructortime_ibfk_2" Association="NtxfcMain.Store.instructortime_ibfk_2">
+            <End Role="member" EntitySet="member" />
+            <End Role="instructortime" EntitySet="instructortime" />
+          </AssociationSet>
+          <AssociationSet Name="instructor_aircraft_ibfk_1" Association="NtxfcMain.Store.instructor_aircraft_ibfk_1">
+            <End Role="member" EntitySet="member" />
+            <End Role="instructor_aircraft" EntitySet="instructor_aircraft" />
+          </AssociationSet>
+          <AssociationSet Name="instructor_aircraft_ibfk_2" Association="NtxfcMain.Store.instructor_aircraft_ibfk_2">
+            <End Role="aircraft" EntitySet="aircraft" />
+            <End Role="instructor_aircraft" EntitySet="instructor_aircraft" />
+          </AssociationSet>
+          <AssociationSet Name="membercheckout_ibfk_1" Association="NtxfcMain.Store.membercheckout_ibfk_1">
+            <End Role="member" EntitySet="member" />
+            <End Role="membercheckout" EntitySet="membercheckout" />
+          </AssociationSet>
+          <AssociationSet Name="membercheckout_ibfk_2" Association="NtxfcMain.Store.membercheckout_ibfk_2">
+            <End Role="aircraft" EntitySet="aircraft" />
+            <End Role="membercheckout" EntitySet="membercheckout" />
+          </AssociationSet>
+          <AssociationSet Name="member_ibfk_1" Association="NtxfcMain.Store.member_ibfk_1">
+            <End Role="login" EntitySet="login" />
+            <End Role="member" EntitySet="member" />
+          </AssociationSet>
+          <AssociationSet Name="member_role_ibfk_1" Association="NtxfcMain.Store.member_role_ibfk_1">
+            <End Role="member" EntitySet="member" />
+            <End Role="member_role" EntitySet="member_role" />
+          </AssociationSet>
+          <AssociationSet Name="member_role_ibfk_2" Association="NtxfcMain.Store.member_role_ibfk_2">
+            <End Role="role" EntitySet="role" />
+            <End Role="member_role" EntitySet="member_role" />
+          </AssociationSet>
+          <AssociationSet Name="reservation_ibfk_1" Association="NtxfcMain.Store.reservation_ibfk_1">
+            <End Role="member" EntitySet="member" />
+            <End Role="reservation" EntitySet="reservation" />
+          </AssociationSet>
+          <AssociationSet Name="reservation_ibfk_2" Association="NtxfcMain.Store.reservation_ibfk_2">
+            <End Role="aircraft" EntitySet="aircraft" />
+            <End Role="reservation" EntitySet="reservation" />
+          </AssociationSet>
+          <AssociationSet Name="squawkcomment_ibfk_1" Association="NtxfcMain.Store.squawkcomment_ibfk_1">
+            <End Role="member" EntitySet="member" />
+            <End Role="squawkcomment" EntitySet="squawkcomment" />
+          </AssociationSet>
+          <AssociationSet Name="squawkcomment_ibfk_2" Association="NtxfcMain.Store.squawkcomment_ibfk_2">
+            <End Role="squawk" EntitySet="squawk" />
+            <End Role="squawkcomment" EntitySet="squawkcomment" />
+          </AssociationSet>
+          <AssociationSet Name="squawk_ibfk_1" Association="NtxfcMain.Store.squawk_ibfk_1">
+            <End Role="member" EntitySet="member" />
+            <End Role="squawk" EntitySet="squawk" />
+          </AssociationSet>
+          <AssociationSet Name="squawk_ibfk_2" Association="NtxfcMain.Store.squawk_ibfk_2">
+            <End Role="aircraft" EntitySet="aircraft" />
+            <End Role="squawk" EntitySet="squawk" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="aircraft">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RegistrationNumber" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Model" Type="varchar" MaxLength="50" />
+          <Property Name="TypeDesignation" Type="varchar" MaxLength="30" />
+          <Property Name="Category" Type="varchar" MaxLength="30" />
+          <Property Name="AircraftClass" Type="varchar" MaxLength="30" />
+          <Property Name="MaxGrossWeight" Type="int" />
+          <Property Name="FuelCapacity" Type="smallint" />
+          <Property Name="UsefulLoad" Type="int" />
+          <Property Name="CruiseSpeed" Type="smallint" />
+          <Property Name="MaxRange" Type="smallint" />
+          <Property Name="Description" Type="varchar" MaxLength="250" />
+          <Property Name="EquipmentList" Type="varchar" MaxLength="250" />
+          <Property Name="IrCertified" Type="bit" />
+          <Property Name="CheckoutRequirements" Type="varchar" MaxLength="250" />
+          <Property Name="HourlyRate" Type="smallint" />
+        </EntityType>
+        <EntityType Name="aircraftimage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AircraftId" Type="uint" Nullable="false" />
+          <Property Name="ImageType" Type="varchar" MaxLength="20" />
+          <Property Name="Url" Type="varchar" MaxLength="250" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'ntxfc_main.aircraftowner' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="aircraftowner">
+          <Key>
+            <PropertyRef Name="OwnerId" />
+            <PropertyRef Name="AircraftId" />
+          </Key>
+          <Property Name="OwnerId" Type="uint" Nullable="false" />
+          <Property Name="AircraftId" Type="uint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'ntxfc_main.instructorinfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="instructorinfo">
+          <Key>
+            <PropertyRef Name="InstructorId" />
+          </Key>
+          <Property Name="InstructorId" Type="uint" Nullable="false" />
+          <Property Name="CertificateNumber" Type="varchar" MaxLength="50" />
+          <Property Name="Ratings" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'ntxfc_main.instructortime' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="instructortime">
+          <Key>
+            <PropertyRef Name="InstructorId" />
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="InstructorId" Type="uint" Nullable="false" />
+          <Property Name="MemberId" Type="uint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'ntxfc_main.instructor_aircraft' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="instructor_aircraft">
+          <Key>
+            <PropertyRef Name="InstructorId" />
+            <PropertyRef Name="AircraftId" />
+          </Key>
+          <Property Name="InstructorId" Type="uint" Nullable="false" />
+          <Property Name="AircraftId" Type="uint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Status" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="member">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LoginId" Type="uint" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="20" />
+          <Property Name="FirstName" Type="varchar" MaxLength="20" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="PrimaryEmail" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="SecondaryEmail" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="12" />
+          <Property Name="AltPhone" Type="varchar" MaxLength="12" />
+          <Property Name="AddressLine_1" Type="varchar" MaxLength="100" />
+          <Property Name="AddressLine_2" Type="varchar" MaxLength="100" />
+          <Property Name="City" Type="varchar" MaxLength="100" />
+          <Property Name="Zip" Type="varchar" MaxLength="5" />
+          <Property Name="Member_since" Type="date" />
+          <Property Name="LastMedical" Type="date" />
+          <Property Name="TotalHours" Type="int" />
+          <Property Name="RetractHours" Type="int" />
+          <Property Name="EmergencyName" Type="varchar" MaxLength="100" />
+          <Property Name="EmergencyPhone" Type="varchar" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="membercheckout">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="uint" Nullable="false" />
+          <Property Name="AircraftId" Type="uint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'ntxfc_main.member_role' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="member_role">
+          <Key>
+            <PropertyRef Name="MemberId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="MemberId" Type="uint" Nullable="false" />
+          <Property Name="RoleId" Type="uint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="reservation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="uint" Nullable="false" />
+          <Property Name="AircraftId" Type="uint" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" MaxLength="32" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="squawk">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PostedOn" Type="date" Nullable="false" />
+          <Property Name="AircraftId" Type="uint" Nullable="false" />
+          <Property Name="PosterId" Type="uint" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="Response" Type="varchar" MaxLength="500" />
+          <Property Name="RespondedBy" Type="int" />
+          <Property Name="RespondedOn" Type="date" />
+          <Property Name="Status" Type="varchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="squawkcomment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SquawkId" Type="uint" Nullable="false" />
+          <Property Name="PostedOn" Type="date" Nullable="false" />
+          <Property Name="PosterId" Type="uint" Nullable="false" />
+          <Property Name="Text" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <Association Name="aircraftimage_ibfk_1">
+          <End Role="aircraft" Type="NtxfcMain.Store.aircraft" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aircraftimage" Type="NtxfcMain.Store.aircraftimage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aircraft">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aircraftimage">
+              <PropertyRef Name="AircraftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="aircraftowner_ibfk_1">
+          <End Role="member" Type="NtxfcMain.Store.member" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aircraftowner" Type="NtxfcMain.Store.aircraftowner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aircraftowner">
+              <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="aircraftowner_ibfk_2">
+          <End Role="aircraft" Type="NtxfcMain.Store.aircraft" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aircraftowner" Type="NtxfcMain.Store.aircraftowner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aircraft">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aircraftowner">
+              <PropertyRef Name="AircraftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="instructortime_ibfk_1">
+          <End Role="member" Type="NtxfcMain.Store.member" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="instructortime" Type="NtxfcMain.Store.instructortime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="instructortime">
+              <PropertyRef Name="InstructorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="instructortime_ibfk_2">
+          <End Role="member" Type="NtxfcMain.Store.member" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="instructortime" Type="NtxfcMain.Store.instructortime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="instructortime">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="instructor_aircraft_ibfk_1">
+          <End Role="member" Type="NtxfcMain.Store.member" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="instructor_aircraft" Type="NtxfcMain.Store.instructor_aircraft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="instructor_aircraft">
+              <PropertyRef Name="InstructorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="instructor_aircraft_ibfk_2">
+          <End Role="aircraft" Type="NtxfcMain.Store.aircraft" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="instructor_aircraft" Type="NtxfcMain.Store.instructor_aircraft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aircraft">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="instructor_aircraft">
+              <PropertyRef Name="AircraftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="membercheckout_ibfk_1">
+          <End Role="member" Type="NtxfcMain.Store.member" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="membercheckout" Type="NtxfcMain.Store.membercheckout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="membercheckout">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="membercheckout_ibfk_2">
+          <End Role="aircraft" Type="NtxfcMain.Store.aircraft" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="membercheckout" Type="NtxfcMain.Store.membercheckout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aircraft">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="membercheckout">
+              <PropertyRef Name="AircraftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="member_ibfk_1">
+          <End Role="login" Type="NtxfcMain.Store.login" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="member" Type="NtxfcMain.Store.member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="login">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="member">
+              <PropertyRef Name="LoginId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="member_role_ibfk_1">
+          <End Role="member" Type="NtxfcMain.Store.member" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="member_role" Type="NtxfcMain.Store.member_role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="member_role">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="member_role_ibfk_2">
+          <End Role="role" Type="NtxfcMain.Store.role" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="member_role" Type="NtxfcMain.Store.member_role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="member_role">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reservation_ibfk_1">
+          <End Role="member" Type="NtxfcMain.Store.member" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="reservation" Type="NtxfcMain.Store.reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="reservation">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reservation_ibfk_2">
+          <End Role="aircraft" Type="NtxfcMain.Store.aircraft" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="reservation" Type="NtxfcMain.Store.reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aircraft">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="reservation">
+              <PropertyRef Name="AircraftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="squawkcomment_ibfk_1">
+          <End Role="member" Type="NtxfcMain.Store.member" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="squawkcomment" Type="NtxfcMain.Store.squawkcomment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="squawkcomment">
+              <PropertyRef Name="PosterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="squawkcomment_ibfk_2">
+          <End Role="squawk" Type="NtxfcMain.Store.squawk" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="squawkcomment" Type="NtxfcMain.Store.squawkcomment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="squawk">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="squawkcomment">
+              <PropertyRef Name="SquawkId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="squawk_ibfk_1">
+          <End Role="member" Type="NtxfcMain.Store.member" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="squawk" Type="NtxfcMain.Store.squawk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="squawk">
+              <PropertyRef Name="PosterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="squawk_ibfk_2">
+          <End Role="aircraft" Type="NtxfcMain.Store.aircraft" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="squawk" Type="NtxfcMain.Store.squawk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aircraft">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="squawk">
+              <PropertyRef Name="AircraftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NtxfcMain" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="NtxfcEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="aircraft" EntityType="NtxfcMain.aircraft" />
+          <EntitySet Name="aircraftimages" EntityType="NtxfcMain.aircraftimage" />
+          <EntitySet Name="instructorinfoes" EntityType="NtxfcMain.instructorinfo" />
+          <EntitySet Name="logins" EntityType="NtxfcMain.login" />
+          <EntitySet Name="members" EntityType="NtxfcMain.member" />
+          <EntitySet Name="membercheckouts" EntityType="NtxfcMain.membercheckout" />
+          <EntitySet Name="reservations" EntityType="NtxfcMain.reservation" />
+          <EntitySet Name="roles" EntityType="NtxfcMain.role" />
+          <EntitySet Name="squawks" EntityType="NtxfcMain.squawk" />
+          <EntitySet Name="squawkcomments" EntityType="NtxfcMain.squawkcomment" />
+          <AssociationSet Name="aircraftimage_ibfk_1" Association="NtxfcMain.aircraftimage_ibfk_1">
+            <End Role="aircraft" EntitySet="aircraft" />
+            <End Role="aircraftimage" EntitySet="aircraftimages" />
+          </AssociationSet>
+          <AssociationSet Name="membercheckout_ibfk_2" Association="NtxfcMain.membercheckout_ibfk_2">
+            <End Role="aircraft" EntitySet="aircraft" />
+            <End Role="membercheckout" EntitySet="membercheckouts" />
+          </AssociationSet>
+          <AssociationSet Name="reservation_ibfk_2" Association="NtxfcMain.reservation_ibfk_2">
+            <End Role="aircraft" EntitySet="aircraft" />
+            <End Role="reservation" EntitySet="reservations" />
+          </AssociationSet>
+          <AssociationSet Name="squawk_ibfk_2" Association="NtxfcMain.squawk_ibfk_2">
+            <End Role="aircraft" EntitySet="aircraft" />
+            <End Role="squawk" EntitySet="squawks" />
+          </AssociationSet>
+          <AssociationSet Name="member_ibfk_1" Association="NtxfcMain.member_ibfk_1">
+            <End Role="login" EntitySet="logins" />
+            <End Role="member" EntitySet="members" />
+          </AssociationSet>
+          <AssociationSet Name="membercheckout_ibfk_1" Association="NtxfcMain.membercheckout_ibfk_1">
+            <End Role="member" EntitySet="members" />
+            <End Role="membercheckout" EntitySet="membercheckouts" />
+          </AssociationSet>
+          <AssociationSet Name="reservation_ibfk_1" Association="NtxfcMain.reservation_ibfk_1">
+            <End Role="member" EntitySet="members" />
+            <End Role="reservation" EntitySet="reservations" />
+          </AssociationSet>
+          <AssociationSet Name="squawkcomment_ibfk_1" Association="NtxfcMain.squawkcomment_ibfk_1">
+            <End Role="member" EntitySet="members" />
+            <End Role="squawkcomment" EntitySet="squawkcomments" />
+          </AssociationSet>
+          <AssociationSet Name="squawk_ibfk_1" Association="NtxfcMain.squawk_ibfk_1">
+            <End Role="member" EntitySet="members" />
+            <End Role="squawk" EntitySet="squawks" />
+          </AssociationSet>
+          <AssociationSet Name="squawkcomment_ibfk_2" Association="NtxfcMain.squawkcomment_ibfk_2">
+            <End Role="squawk" EntitySet="squawks" />
+            <End Role="squawkcomment" EntitySet="squawkcomments" />
+          </AssociationSet>
+          <AssociationSet Name="aircraftowner" Association="NtxfcMain.aircraftowner">
+            <End Role="member" EntitySet="members" />
+            <End Role="aircraft" EntitySet="aircraft" />
+          </AssociationSet>
+          <AssociationSet Name="instructortime" Association="NtxfcMain.instructortime">
+            <End Role="member" EntitySet="members" />
+            <End Role="member1" EntitySet="members" />
+          </AssociationSet>
+          <AssociationSet Name="instructor_aircraft" Association="NtxfcMain.instructor_aircraft">
+            <End Role="member" EntitySet="members" />
+            <End Role="aircraft" EntitySet="aircraft" />
+          </AssociationSet>
+          <AssociationSet Name="member_role" Association="NtxfcMain.member_role">
+            <End Role="member" EntitySet="members" />
+            <End Role="role" EntitySet="roles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="aircraft">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="RegistrationNumber" Nullable="false" />
+          <Property Type="String" Name="Model" />
+          <Property Type="String" Name="TypeDesignation" />
+          <Property Type="String" Name="Category" />
+          <Property Type="String" Name="AircraftClass" />
+          <Property Type="Int32" Name="MaxGrossWeight" />
+          <Property Type="Int16" Name="FuelCapacity" />
+          <Property Type="Int32" Name="UsefulLoad" />
+          <Property Type="Int16" Name="CruiseSpeed" />
+          <Property Type="Int16" Name="MaxRange" />
+          <Property Type="String" Name="Description" />
+          <Property Type="String" Name="EquipmentList" />
+          <Property Type="Boolean" Name="IrCertified" />
+          <Property Type="String" Name="CheckoutRequirements" />
+          <Property Type="Int16" Name="HourlyRate" />
+          <NavigationProperty Name="aircraftimages" Relationship="NtxfcMain.aircraftimage_ibfk_1" FromRole="aircraft" ToRole="aircraftimage" />
+          <NavigationProperty Name="membercheckouts" Relationship="NtxfcMain.membercheckout_ibfk_2" FromRole="aircraft" ToRole="membercheckout" />
+          <NavigationProperty Name="reservations" Relationship="NtxfcMain.reservation_ibfk_2" FromRole="aircraft" ToRole="reservation" />
+          <NavigationProperty Name="squawks" Relationship="NtxfcMain.squawk_ibfk_2" FromRole="aircraft" ToRole="squawk" />
+          <NavigationProperty Name="members" Relationship="NtxfcMain.aircraftowner" FromRole="aircraft" ToRole="member" />
+          <NavigationProperty Name="members1" Relationship="NtxfcMain.instructor_aircraft" FromRole="aircraft" ToRole="member" />
+        </EntityType>
+        <EntityType Name="aircraftimage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="AircraftId" Nullable="false" />
+          <Property Type="String" Name="ImageType" />
+          <Property Type="String" Name="Url" />
+          <Property Type="String" Name="Description" />
+          <NavigationProperty Name="aircraft" Relationship="NtxfcMain.aircraftimage_ibfk_1" FromRole="aircraftimage" ToRole="aircraft" />
+        </EntityType>
+        <EntityType Name="instructorinfo">
+          <Key>
+            <PropertyRef Name="InstructorId" />
+          </Key>
+          <Property Type="Int64" Name="InstructorId" Nullable="false" />
+          <Property Type="String" Name="CertificateNumber" />
+          <Property Type="String" Name="Ratings" />
+        </EntityType>
+        <EntityType Name="login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Username" Nullable="false" />
+          <Property Type="String" Name="Password" Nullable="false" />
+          <Property Type="String" Name="Status" />
+          <NavigationProperty Name="members" Relationship="NtxfcMain.member_ibfk_1" FromRole="login" ToRole="member" />
+        </EntityType>
+        <EntityType Name="member">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="LoginId" Nullable="false" />
+          <Property Type="String" Name="Status" />
+          <Property Type="String" Name="FirstName" />
+          <Property Type="String" Name="LastName" />
+          <Property Type="String" Name="PrimaryEmail" Nullable="false" />
+          <Property Type="String" Name="SecondaryEmail" />
+          <Property Type="String" Name="Phone" />
+          <Property Type="String" Name="AltPhone" />
+          <Property Type="String" Name="AddressLine_1" />
+          <Property Type="String" Name="AddressLine_2" />
+          <Property Type="String" Name="City" />
+          <Property Type="String" Name="Zip" />
+          <Property Type="DateTime" Name="Member_since" />
+          <Property Type="DateTime" Name="LastMedical" />
+          <Property Type="Int32" Name="TotalHours" />
+          <Property Type="Int32" Name="RetractHours" />
+          <Property Type="String" Name="EmergencyName" />
+          <Property Type="String" Name="EmergencyPhone" />
+          <NavigationProperty Name="login" Relationship="NtxfcMain.member_ibfk_1" FromRole="member" ToRole="login" />
+          <NavigationProperty Name="membercheckouts" Relationship="NtxfcMain.membercheckout_ibfk_1" FromRole="member" ToRole="membercheckout" />
+          <NavigationProperty Name="reservations" Relationship="NtxfcMain.reservation_ibfk_1" FromRole="member" ToRole="reservation" />
+          <NavigationProperty Name="squawkcomments" Relationship="NtxfcMain.squawkcomment_ibfk_1" FromRole="member" ToRole="squawkcomment" />
+          <NavigationProperty Name="squawks" Relationship="NtxfcMain.squawk_ibfk_1" FromRole="member" ToRole="squawk" />
+          <NavigationProperty Name="aircraft" Relationship="NtxfcMain.aircraftowner" FromRole="member" ToRole="aircraft" />
+          <NavigationProperty Name="member1" Relationship="NtxfcMain.instructortime" FromRole="member" ToRole="member1" />
+          <NavigationProperty Name="members" Relationship="NtxfcMain.instructortime" FromRole="member1" ToRole="member" />
+          <NavigationProperty Name="aircraft1" Relationship="NtxfcMain.instructor_aircraft" FromRole="member" ToRole="aircraft" />
+          <NavigationProperty Name="roles" Relationship="NtxfcMain.member_role" FromRole="member" ToRole="role" />
+        </EntityType>
+        <EntityType Name="membercheckout">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="MemberId" Nullable="false" />
+          <Property Type="Int64" Name="AircraftId" Nullable="false" />
+          <NavigationProperty Name="aircraft" Relationship="NtxfcMain.membercheckout_ibfk_2" FromRole="membercheckout" ToRole="aircraft" />
+          <NavigationProperty Name="member" Relationship="NtxfcMain.membercheckout_ibfk_1" FromRole="membercheckout" ToRole="member" />
+        </EntityType>
+        <EntityType Name="reservation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="MemberId" Nullable="false" />
+          <Property Type="Int64" Name="AircraftId" Nullable="false" />
+          <Property Type="DateTime" Name="StartTime" Nullable="false" />
+          <Property Type="DateTime" Name="EndTime" Nullable="false" />
+          <Property Type="String" Name="Status" />
+          <NavigationProperty Name="aircraft" Relationship="NtxfcMain.reservation_ibfk_2" FromRole="reservation" ToRole="aircraft" />
+          <NavigationProperty Name="member" Relationship="NtxfcMain.reservation_ibfk_1" FromRole="reservation" ToRole="member" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" />
+          <Property Type="String" Name="Description" />
+          <NavigationProperty Name="members" Relationship="NtxfcMain.member_role" FromRole="role" ToRole="member" />
+        </EntityType>
+        <EntityType Name="squawk">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="PostedOn" Nullable="false" />
+          <Property Type="Int64" Name="AircraftId" Nullable="false" />
+          <Property Type="Int64" Name="PosterId" Nullable="false" />
+          <Property Type="String" Name="Description" />
+          <Property Type="String" Name="Response" />
+          <Property Type="Int32" Name="RespondedBy" />
+          <Property Type="DateTime" Name="RespondedOn" />
+          <Property Type="String" Name="Status" />
+          <NavigationProperty Name="aircraft" Relationship="NtxfcMain.squawk_ibfk_2" FromRole="squawk" ToRole="aircraft" />
+          <NavigationProperty Name="member" Relationship="NtxfcMain.squawk_ibfk_1" FromRole="squawk" ToRole="member" />
+          <NavigationProperty Name="squawkcomments" Relationship="NtxfcMain.squawkcomment_ibfk_2" FromRole="squawk" ToRole="squawkcomment" />
+        </EntityType>
+        <EntityType Name="squawkcomment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="SquawkId" Nullable="false" />
+          <Property Type="DateTime" Name="PostedOn" Nullable="false" />
+          <Property Type="Int64" Name="PosterId" Nullable="false" />
+          <Property Type="String" Name="Text" />
+          <NavigationProperty Name="member" Relationship="NtxfcMain.squawkcomment_ibfk_1" FromRole="squawkcomment" ToRole="member" />
+          <NavigationProperty Name="squawk" Relationship="NtxfcMain.squawkcomment_ibfk_2" FromRole="squawkcomment" ToRole="squawk" />
+        </EntityType>
+        <Association Name="aircraftimage_ibfk_1">
+          <End Type="NtxfcMain.aircraft" Role="aircraft" Multiplicity="1" />
+          <End Type="NtxfcMain.aircraftimage" Role="aircraftimage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aircraft">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aircraftimage">
+              <PropertyRef Name="AircraftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="membercheckout_ibfk_2">
+          <End Type="NtxfcMain.aircraft" Role="aircraft" Multiplicity="1" />
+          <End Type="NtxfcMain.membercheckout" Role="membercheckout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aircraft">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="membercheckout">
+              <PropertyRef Name="AircraftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reservation_ibfk_2">
+          <End Type="NtxfcMain.aircraft" Role="aircraft" Multiplicity="1" />
+          <End Type="NtxfcMain.reservation" Role="reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aircraft">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="reservation">
+              <PropertyRef Name="AircraftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="squawk_ibfk_2">
+          <End Type="NtxfcMain.aircraft" Role="aircraft" Multiplicity="1" />
+          <End Type="NtxfcMain.squawk" Role="squawk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aircraft">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="squawk">
+              <PropertyRef Name="AircraftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="member_ibfk_1">
+          <End Type="NtxfcMain.login" Role="login" Multiplicity="1" />
+          <End Type="NtxfcMain.member" Role="member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="login">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="member">
+              <PropertyRef Name="LoginId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="membercheckout_ibfk_1">
+          <End Type="NtxfcMain.member" Role="member" Multiplicity="1" />
+          <End Type="NtxfcMain.membercheckout" Role="membercheckout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="membercheckout">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reservation_ibfk_1">
+          <End Type="NtxfcMain.member" Role="member" Multiplicity="1" />
+          <End Type="NtxfcMain.reservation" Role="reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="reservation">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="squawkcomment_ibfk_1">
+          <End Type="NtxfcMain.member" Role="member" Multiplicity="1" />
+          <End Type="NtxfcMain.squawkcomment" Role="squawkcomment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="squawkcomment">
+              <PropertyRef Name="PosterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="squawk_ibfk_1">
+          <End Type="NtxfcMain.member" Role="member" Multiplicity="1" />
+          <End Type="NtxfcMain.squawk" Role="squawk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="squawk">
+              <PropertyRef Name="PosterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="squawkcomment_ibfk_2">
+          <End Type="NtxfcMain.squawk" Role="squawk" Multiplicity="1" />
+          <End Type="NtxfcMain.squawkcomment" Role="squawkcomment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="squawk">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="squawkcomment">
+              <PropertyRef Name="SquawkId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="aircraftowner">
+          <End Type="NtxfcMain.member" Role="member" Multiplicity="*" />
+          <End Type="NtxfcMain.aircraft" Role="aircraft" Multiplicity="*" />
+        </Association>
+        <Association Name="instructortime">
+          <End Type="NtxfcMain.member" Role="member" Multiplicity="*" />
+          <End Type="NtxfcMain.member" Role="member1" Multiplicity="*" />
+        </Association>
+        <Association Name="instructor_aircraft">
+          <End Type="NtxfcMain.member" Role="member" Multiplicity="*" />
+          <End Type="NtxfcMain.aircraft" Role="aircraft" Multiplicity="*" />
+        </Association>
+        <Association Name="member_role">
+          <End Type="NtxfcMain.member" Role="member" Multiplicity="*" />
+          <End Type="NtxfcMain.role" Role="role" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NtxfcMainStoreContainer" CdmEntityContainer="NtxfcEntities">
+          <EntitySetMapping Name="aircraft">
+            <EntityTypeMapping TypeName="NtxfcMain.aircraft">
+              <MappingFragment StoreEntitySet="aircraft">
+                <ScalarProperty Name="HourlyRate" ColumnName="HourlyRate" />
+                <ScalarProperty Name="CheckoutRequirements" ColumnName="CheckoutRequirements" />
+                <ScalarProperty Name="IrCertified" ColumnName="IrCertified" />
+                <ScalarProperty Name="EquipmentList" ColumnName="EquipmentList" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="MaxRange" ColumnName="MaxRange" />
+                <ScalarProperty Name="CruiseSpeed" ColumnName="CruiseSpeed" />
+                <ScalarProperty Name="UsefulLoad" ColumnName="UsefulLoad" />
+                <ScalarProperty Name="FuelCapacity" ColumnName="FuelCapacity" />
+                <ScalarProperty Name="MaxGrossWeight" ColumnName="MaxGrossWeight" />
+                <ScalarProperty Name="AircraftClass" ColumnName="AircraftClass" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="TypeDesignation" ColumnName="TypeDesignation" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aircraftimages">
+            <EntityTypeMapping TypeName="NtxfcMain.aircraftimage">
+              <MappingFragment StoreEntitySet="aircraftimage">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="ImageType" ColumnName="ImageType" />
+                <ScalarProperty Name="AircraftId" ColumnName="AircraftId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="instructorinfoes">
+            <EntityTypeMapping TypeName="NtxfcMain.instructorinfo">
+              <MappingFragment StoreEntitySet="instructorinfo">
+                <ScalarProperty Name="Ratings" ColumnName="Ratings" />
+                <ScalarProperty Name="CertificateNumber" ColumnName="CertificateNumber" />
+                <ScalarProperty Name="InstructorId" ColumnName="InstructorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="logins">
+            <EntityTypeMapping TypeName="NtxfcMain.login">
+              <MappingFragment StoreEntitySet="login">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="members">
+            <EntityTypeMapping TypeName="NtxfcMain.member">
+              <MappingFragment StoreEntitySet="member">
+                <ScalarProperty Name="EmergencyPhone" ColumnName="EmergencyPhone" />
+                <ScalarProperty Name="EmergencyName" ColumnName="EmergencyName" />
+                <ScalarProperty Name="RetractHours" ColumnName="RetractHours" />
+                <ScalarProperty Name="TotalHours" ColumnName="TotalHours" />
+                <ScalarProperty Name="LastMedical" ColumnName="LastMedical" />
+                <ScalarProperty Name="Member_since" ColumnName="Member_since" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="AddressLine_2" ColumnName="AddressLine_2" />
+                <ScalarProperty Name="AddressLine_1" ColumnName="AddressLine_1" />
+                <ScalarProperty Name="AltPhone" ColumnName="AltPhone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="SecondaryEmail" ColumnName="SecondaryEmail" />
+                <ScalarProperty Name="PrimaryEmail" ColumnName="PrimaryEmail" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="membercheckouts">
+            <EntityTypeMapping TypeName="NtxfcMain.membercheckout">
+              <MappingFragment StoreEntitySet="membercheckout">
+                <ScalarProperty Name="AircraftId" ColumnName="AircraftId" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reservations">
+            <EntityTypeMapping TypeName="NtxfcMain.reservation">
+              <MappingFragment StoreEntitySet="reservation">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="AircraftId" ColumnName="AircraftId" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roles">
+            <EntityTypeMapping TypeName="NtxfcMain.role">
+              <MappingFragment StoreEntitySet="role">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="squawks">
+            <EntityTypeMapping TypeName="NtxfcMain.squawk">
+              <MappingFragment StoreEntitySet="squawk">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RespondedOn" ColumnName="RespondedOn" />
+                <ScalarProperty Name="RespondedBy" ColumnName="RespondedBy" />
+                <ScalarProperty Name="Response" ColumnName="Response" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PosterId" ColumnName="PosterId" />
+                <ScalarProperty Name="AircraftId" ColumnName="AircraftId" />
+                <ScalarProperty Name="PostedOn" ColumnName="PostedOn" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="squawkcomments">
+            <EntityTypeMapping TypeName="NtxfcMain.squawkcomment">
+              <MappingFragment StoreEntitySet="squawkcomment">
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="PosterId" ColumnName="PosterId" />
+                <ScalarProperty Name="PostedOn" ColumnName="PostedOn" />
+                <ScalarProperty Name="SquawkId" ColumnName="SquawkId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="aircraftowner" TypeName="NtxfcMain.aircraftowner" StoreEntitySet="aircraftowner">
+            <EndProperty Name="aircraft">
+              <ScalarProperty Name="Id" ColumnName="AircraftId" />
+            </EndProperty>
+            <EndProperty Name="member">
+              <ScalarProperty Name="Id" ColumnName="OwnerId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="instructortime" TypeName="NtxfcMain.instructortime" StoreEntitySet="instructortime">
+            <EndProperty Name="member1">
+              <ScalarProperty Name="Id" ColumnName="MemberId" />
+            </EndProperty>
+            <EndProperty Name="member">
+              <ScalarProperty Name="Id" ColumnName="InstructorId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="instructor_aircraft" TypeName="NtxfcMain.instructor_aircraft" StoreEntitySet="instructor_aircraft">
+            <EndProperty Name="aircraft">
+              <ScalarProperty Name="Id" ColumnName="AircraftId" />
+            </EndProperty>
+            <EndProperty Name="member">
+              <ScalarProperty Name="Id" ColumnName="InstructorId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="member_role" TypeName="NtxfcMain.member_role" StoreEntitySet="member_role">
+            <EndProperty Name="role">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="member">
+              <ScalarProperty Name="Id" ColumnName="MemberId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="NtxfcModel" ZoomLevel="92">
+        <EntityTypeShape EntityType="NtxfcMain.aircraft" Width="1.5" PointX="5.25" PointY="8.5" Height="5.2494108072916674" />
+        <EntityTypeShape EntityType="NtxfcMain.aircraftimage" Width="1.5" PointX="7.5" PointY="10" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="NtxfcMain.instructorinfo" Width="1.5" PointX="0.75" PointY="0.75" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="NtxfcMain.login" Width="1.5" PointX="0.75" PointY="11.375" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="NtxfcMain.member" Width="1.5" PointX="3" PointY="9.125" Height="6.5955208333333317" />
+        <EntityTypeShape EntityType="NtxfcMain.membercheckout" Width="1.5" PointX="7.5" PointY="13.125" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="NtxfcMain.reservation" Width="1.5" PointX="10.5" PointY="10.75" Height="2.5571907552083388" />
+        <EntityTypeShape EntityType="NtxfcMain.role" Width="1.5" PointX="5.25" PointY="20.5" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="NtxfcMain.squawk" Width="1.5" PointX="10.5" PointY="6.375" Height="3.3263964843750031" />
+        <EntityTypeShape EntityType="NtxfcMain.squawkcomment" Width="1.5" PointX="12.75" PointY="9.875" Height="2.3648893229166674" />
+        <AssociationConnector Association="NtxfcMain.aircraftimage_ibfk_1" >
+          <ConnectorPoint PointX="6.75" PointY="11.086293945312502" />
+          <ConnectorPoint PointX="7.5" PointY="11.086293945312502" />
+        </AssociationConnector>
+        <AssociationConnector Association="NtxfcMain.membercheckout_ibfk_2" >
+          <ConnectorPoint PointX="6.75" PointY="13.437205403645834" />
+          <ConnectorPoint PointX="7.5" PointY="13.437205403645834" />
+        </AssociationConnector>
+        <AssociationConnector Association="NtxfcMain.reservation_ibfk_2" >
+          <ConnectorPoint PointX="6.75" PointY="12.648793945312502" />
+          <ConnectorPoint PointX="10.5" PointY="12.648793945312502" />
+        </AssociationConnector>
+        <AssociationConnector Association="NtxfcMain.squawk_ibfk_2" >
+          <ConnectorPoint PointX="6.75" PointY="9.1006982421875016" />
+          <ConnectorPoint PointX="10.5" PointY="9.1006982421875016" />
+        </AssociationConnector>
+        <AssociationConnector Association="NtxfcMain.member_ibfk_1" >
+          <ConnectorPoint PointX="2.25" PointY="12.365143229166669" />
+          <ConnectorPoint PointX="3" PointY="12.365143229166669" />
+        </AssociationConnector>
+        <AssociationConnector Association="NtxfcMain.membercheckout_ibfk_1" >
+          <ConnectorPoint PointX="4.5" PointY="14.458598632812503" />
+          <ConnectorPoint PointX="7.5" PointY="14.458598632812503" />
+        </AssociationConnector>
+        <AssociationConnector Association="NtxfcMain.reservation_ibfk_1" >
+          <ConnectorPoint PointX="4.5" PointY="15.444153645833335" />
+          <ConnectorPoint PointX="11.25" PointY="15.444153645833335" />
+          <ConnectorPoint PointX="11.25" PointY="13.307190755208339" />
+        </AssociationConnector>
+        <AssociationConnector Association="NtxfcMain.squawkcomment_ibfk_1" >
+          <ConnectorPoint PointX="4.5" PointY="15.274717552083343" />
+          <ConnectorPoint PointX="11.166666666666666" PointY="15.274717552083343" />
+          <ConnectorPoint PointX="11.333333333333334" PointY="15.274717552083343" />
+          <ConnectorPoint PointX="13.5" PointY="15.274717552083343" />
+          <ConnectorPoint PointX="13.5" PointY="12.239889322916667" />
+        </AssociationConnector>
+        <AssociationConnector Association="NtxfcMain.squawk_ibfk_1" >
+          <ConnectorPoint PointX="3.75" PointY="9.125" />
+          <ConnectorPoint PointX="3.75" PointY="7.40625" />
+          <ConnectorPoint PointX="10.5" PointY="7.40625" />
+        </AssociationConnector>
+        <AssociationConnector Association="NtxfcMain.squawkcomment_ibfk_2" >
+          <ConnectorPoint PointX="12" PointY="8.0381982421875016" />
+          <ConnectorPoint PointX="13.5" PointY="8.0381982421875016" />
+          <ConnectorPoint PointX="13.5" PointY="9.875" />
+        </AssociationConnector>
+        <AssociationConnector Association="NtxfcMain.aircraftowner" >
+          <ConnectorPoint PointX="4.5" PointY="11.437205403645834" />
+          <ConnectorPoint PointX="5.25" PointY="11.437205403645834" />
+        </AssociationConnector>
+        <AssociationConnector Association="NtxfcMain.instructortime" >
+          <ConnectorPoint PointX="3.5319230769230767" PointY="15.720520833333332" />
+          <ConnectorPoint PointX="3.5319230769230767" PointY="15.970520833333332" />
+          <ConnectorPoint PointX="3.9784615384615383" PointY="15.970520833333332" />
+          <ConnectorPoint PointX="3.9784615384615383" PointY="15.720520833333332" />
+        </AssociationConnector>
+        <AssociationConnector Association="NtxfcMain.instructor_aircraft" >
+          <ConnectorPoint PointX="4.5" PointY="10.218602701822917" />
+          <ConnectorPoint PointX="5.25" PointY="10.218602701822917" />
+        </AssociationConnector>
+        <AssociationConnector Association="NtxfcMain.member_role" >
+          <ConnectorPoint PointX="3.2347090384615385" PointY="15.720520833333332" />
+          <ConnectorPoint PointX="3.2347090384615385" PointY="21.393992513020834" />
+          <ConnectorPoint PointX="5.25" PointY="21.393992513020834" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

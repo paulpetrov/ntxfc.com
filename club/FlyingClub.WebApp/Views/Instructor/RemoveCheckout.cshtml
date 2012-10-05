@@ -1,0 +1,20 @@
+﻿@model FlyingClub.WebApp.Models.AircraftCheckoutViewModel
+@{
+    ViewBag.Title = "RemoveCheckout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Remove Checkout</h2>
+
+<p>
+ Are you sure to remove checkout in aircraft @Model.RegistrationNumber for pilot @Model.PilotName?
+</p>
+@using (Html.BeginForm()) 
+{
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.PilotId)
+    <p>
+        <input type="submit" value="Remove" /> |
+        @Html.ActionLink("Back", "EditPilotCheckouts", new { memberId = Model.PilotId })
+    </p>
+}

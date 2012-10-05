@@ -1,0 +1,92 @@
+﻿@model FlyingClub.WebApp.Models.AircraftIndexViewModel
+
+@{
+    ViewBag.Title = "Aircraft: Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.PageTitle(PageTitleImage.Squawk, "Aircraft", "Home")
+<p>@Html.MvcSiteMap().SiteMapPath()</p>
+
+
+<p>
+@if (User.IsInRole(FlyingClub.Common.UserRoles.Admin.ToString()))
+{ 
+    @Html.ActionLink("Add New Aircraft", "Create")
+}
+    
+</p>
+<table>
+    <tr>
+        <th>
+            Tail Number
+        </th>
+        <th>
+            Make
+        </th>
+        <th>
+            Model
+        </th>
+        <th>
+            Type Designation
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Hourly Rate
+        </th>
+        <th>
+            Status
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.AircraftList)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegistrationNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Make)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeDesignation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HourlyRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+        @if (User.IsInRole(FlyingClub.Common.UserRoles.Admin.ToString()))
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) @:|
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) @:|
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { OnClick = "return confirm('Are you sure you want to delete?');" }) @:|
+            @Html.ActionLink("Squawks", "GetSquawksForAircraft", "Squawk", new { id = item.Id }, null)
+        }
+        else if (User.IsInRole(FlyingClub.Common.UserRoles.AircraftOwner.ToString()))
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) @:|
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) @:|
+            @Html.ActionLink("Squawks", "GetSquawksForAircraft", "Squawk", new { id = item.Id }, null)
+        }
+        else
+        { 
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) @:|
+            @Html.ActionLink("Squawks", "GetSquawksForAircraft", "Squawk", new { id = item.Id }, null)
+        }
+        </td>
+    </tr>
+}
+
+</table>

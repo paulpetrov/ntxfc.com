@@ -1,0 +1,58 @@
+﻿@model FlyingClub.WebApp.Models.ReservationViewModel
+
+@{
+    ViewBag.Title = String.Concat("Reservation: ", Model.Aircraft.RegistrationNumber);
+}
+
+@Html.PageTitle(PageTitleImage.Reservation, "Reservations", Model.Aircraft.Name)
+<p>@Html.MvcSiteMap().SiteMapPath()</p>
+
+<fieldset>
+    <legend>Reservation</legend>
+
+    <div class="display-label">Member</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Member.FirstName) @Html.DisplayFor(model => model.Member.LastName)
+    </div>
+
+    <div class="display-label">Aircraft</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Aircraft.RegistrationNumber)
+    </div>
+
+    <div class="display-label">Start Date</div>
+    <div class="display-field">
+        @Model.StartDate.ToString("M/dd/yyyy HH:mm")
+    </div>
+
+    <div class="display-label">End Date</div>
+    <div class="display-field">
+        @Model.EndDate.ToString("M/dd/yyyy HH:mm")
+    </div>
+
+    <div class="display-label">Instructor</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Instructor.FullName)
+    </div>
+
+    <div class="display-label">Destination</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Destination)
+    </div>
+
+    <div class="display-label">Notes:</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Notes)
+    </div>
+
+</fieldset>
+<p>
+    @if (Model.CanEdit()) {
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) @:|
+    }
+    @if (Model.CanDelete()) {
+    @Html.ActionLink("Cancel Reservation", "Delete", new { id = Model.Id }) @:|
+    }
+    @Html.ActionLink("Back to My Reservations", "Index") |
+    @Html.ActionLink("Back to Week View", "AircraftByWeek", new { aircraftId = Model.Aircraft.Id, startDate = Model.StartDate.ToString("MM/dd/yyyy")})
+</p>
