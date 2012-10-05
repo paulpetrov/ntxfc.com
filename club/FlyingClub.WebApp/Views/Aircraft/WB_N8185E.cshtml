@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "N8185E Weight and Balance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Weight and Balance N8185E</h2>
+
+<table cellpadding="0" cellspacing="0" border="0" align="center">
+        <form name="wb" action="wandb.cfm" method="post" onsubmit="return _CF_checkwb(this)">
+        <tr>			
+                <td><center><b>N8185E</b><br>
+                Useful load: 962 lbs<br>
+                Payload: 530 lbs <br>
+                Payload w/fuel at tabs: 662 lbs <br>
+                Empty CG: 87.6			</center>
+                        <noscript>
+                        <p><center><i><font color="#cc0000">** Javascript is required to
+                        use this calculator. Yours seems to be disabled. **</font></i></center></noscript>
+                        <table border=4 cellspacing=0 cellpadding=0 bgcolor="#dddddd" align="center">
+                                
+                                <tr>
+
+                                        <td class="nav">&nbsp;Empty Weight (lbs)</td>
+                                        <td  align="center" class="nav"><input type="hidden" size="7" name="ew" value="1788" class="nav">1788</td>
+                                        <td  align="center" class="nav"><input type="hidden" size="7" name="ewarm" value="87.58" class="nav"></td>
+                                        <td  align="center" class="nav" bgcolor="#cccccc"><input type="hidden" size="8" name="ewmom" class="nav"></td>
+                                </tr>
+                                <tr>
+
+                                        <td class="nav">&nbsp;<b>Fuel (gals)<br>50 gal tabs <br>72 gal max</b></td>
+                                        <td  align="center" class="nav"><input type="text" size="7" name="fuel" value="" class="nav"></td>
+                                        <td  align="center" class="nav"><input type="hidden" size="7" name="fuelarm" value="95.0" class="nav"></td>
+                                        <td  align="center" class="nav" bgcolor="#cccccc"><input type="hidden" size="8" name="fuelmom" class="nav"></td>
+                                </tr>
+                                <tr>
+                                        <td class="nav">&nbsp;<b>Front Seat (lbs)</b></td>
+                                        <td  align="center" class="nav"><input type="text" size="7" name="fr1" value="" class="nav"></td>
+                                        <td  align="center" class="nav"><input type="hidden" size="7" name="fr1arm" value="80.5" class="nav"></td>
+                                        <td  align="center" class="nav" bgcolor="#cccccc"><input type="hidden" size="8" name="fr1mom" class="nav"></td>
+
+                                </tr>
+                                
+                                
+                                <tr>
+                                        <td class="nav">&nbsp;<b>Rear Seat (lbs)</b></td>
+                                        <td  align="center" class="nav"><input type="text" size="7" name="r1" value="" class="nav"></td>
+
+                                        <td  align="center" class="nav"><input type="hidden" size="7" name="r1arm" value="118.1" class="nav"></td>
+                                        <td  align="center" class="nav" bgcolor="#cccccc"><input type="hidden" size="8" name="r1mom" class="nav"></td>
+                                </tr>
+                                
+                                <tr>
+                                        <td class="nav">&nbsp;<b>Baggage Area (lbs)<br>200 lbs max</b></td>
+                                        <td  align="center" class="nav"><input type="text" size="7" name="bag" value="" class="nav"></td>
+                                        <td  align="center" class="nav"><input type="hidden" size="7" name="bagarm" value="142.8" class="nav"></td>
+                                        <td  align="center" class="nav" bgcolor="#cccccc"><input type="hidden" size="8" name="bagmom" class="nav"></td>
+                                </tr>
+                                
+                                <tr bgcolor="#ffcc33">
+                                        <td>&nbsp;<b>Gross Weight:<br>Max 2750 lbs</b></td>
+                                        <td class="nav"  align="center"><input type="text" size="7" name="totwt" class="nav"></td>
+                                        <td class="nav">&nbsp;</td>
+                                        <td  class="nav" align="center" bgcolor="#cccccc"><input type="hidden" size="8" name="totmom" class="nav"></td>
+                                </tr>
+
+                                <tr bgcolor="#ffcc33">
+                                        <td>&nbsp;<b>Center of Gravity:</b></td>
+                                        
+                                        <td class="nav"  align="center"><input type="text" size="7" name="totarm" class="nav"></td>
+                                        <td class="nav" bgcolor="#cccccc">&nbsp;</td>
+                                </tr>
+                                <tr bgcolor="#aaaaaa">
+                                        
+                                        <td COLSPAN="3" class="nav">
+                                                <input type=button value="&nbsp;Calculate&nbsp;" onClick="doCalc()" class="nav"> &nbsp; 
+                                                <input type="reset" value="Reset form" class="nav">
+
+                                        </td>
+                                </tr>
+                        </table>
+                </td>
+
+        </tr>
+        </form>
+        
+
+</table>
