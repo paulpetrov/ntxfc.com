@@ -1,0 +1,58 @@
+﻿@model List<FlyingClub.WebApp.Models.AircraftStatusViewModel>
+
+@{
+    ViewBag.Title = "Aircraft: Status";
+}
+
+@Html.PageTitle(PageTitleImage.Aircraft, "Aircraft", "Status")
+<p>@Html.MvcSiteMap().SiteMapPath()</p>
+
+<table>
+    <tr>
+        <th></th>
+        <th>Aircraft</th>
+        <th>Status</th>
+        <th></th>
+        <th>Maintenance Information</th>
+        <th>Operational Notes</th>        
+        <th>Active Squawks</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @if (!String.IsNullOrEmpty(item.ImageUrl)) 
+            {
+                <img alt="@item.RegistrationNumber" src="@item.ImageUrl" />
+            }
+         </td>
+        <td  style="width:150px">
+            @item.RegistrationNumber<br />
+            @item.Model
+            <p>@Html.ActionLink("Contact Owner", "ListOwners", "Aircraft", new { id = item.Id, regNum = item.RegistrationNumber }, null) </p>
+        </td>
+        <td class="@item.Status">@item.Status</td>
+        <td>&nbsp;</td>
+        <td>@Html.ActionLink("View Log", "ViewLog", "Aircraft", new { aircraftId = item.Id, regNum = item.RegistrationNumber }, null)<br />
+            @item.StatusNotes<br />
+        </td>
+        <td>@Html.ActionLink("W & B", "WeightAndBalance", "Aircraft", new { aircraftId = item.Id }, null)<br />
+            @item.OperationalNotes 
+        </td>
+        <td>
+            @if (item.HasSquawks)
+            {
+                @Html.ActionLink("Chk squawks", "GetSquawksForAircraft", "Squawk", new { id = @item.Id }, null)
+            }
+            else
+            {
+                @:<p>No squawks</p>
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Add squawk", "Create", "Squawk", new { aircraftId = @item.Id }, null)
+        </td>
+    </tr>
+    }
+</table>

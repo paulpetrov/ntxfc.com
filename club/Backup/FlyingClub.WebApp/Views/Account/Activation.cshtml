@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Account Activation";
+}
+
+<h2>Account Activation</h2>
+
+@Html.ValidationSummary(false, "Activation was unsuccessful. Please correct the errors and try again.")
+
+@if (ViewData["Message"] != null)
+{
+    @:<p>@ViewData["Message"]</p>
+}
+
+<p>Click <a href="@ViewData["FrontEndUrl"]">here</a> to continue.</p>

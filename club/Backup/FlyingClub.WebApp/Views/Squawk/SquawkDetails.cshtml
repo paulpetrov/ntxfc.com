@@ -1,0 +1,84 @@
+﻿@model FlyingClub.WebApp.Models.SquawkDetailViewModel
+
+@{
+    ViewBag.Title = String.Concat("Squawk: ", Model.RegistrationNumber);
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.PageTitle(PageTitleImage.Squawk, "Squawk", Model.RegistrationNumber)
+<p>@Html.MvcSiteMap().SiteMapPath()</p>
+
+<fieldset>
+    <legend>Squawk</legend>
+
+    <div class="display-label">Date Posted</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PostedOn)
+    </div>
+
+    <div class="display-label">Subject</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Subject)
+    </div>
+
+    <div class="display-label">Posted By</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PostedBy)
+    </div>
+
+    <div class="display-label">Problem Description</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+@if (Model.ResolvedOn != null)
+{ 
+    <div class="display-label">Resolution Notes</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ResolutionNotes)
+    </div>
+
+    <div class="display-label">Resolved By</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ResolvedBy)
+    </div>
+
+    <div class="display-label">Resolved On</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ResolvedOn)
+    </div>
+}
+    <div class="display-label">Status</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Status)
+    </div>
+</fieldset>
+<p>
+@if (User.IsInRole(FlyingClub.Common.UserRoles.Admin.ToString()))
+{ 
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) @:|
+    @Html.ActionLink("Delete", "Delete", new { id = Model.Id }, new { OnClick = "return confirm('Are you sure you want to delete?');" })
+}  
+    @Html.ActionLink("Back to List", "ListActiveSquawks")
+</p>
+<fieldset>
+  <legend>Comments</legend>
+  <table>
+  @foreach (var comment in Model.Comments)
+  { 
+        <tr>
+          <td>@comment.PostedBy<br />
+                @comment.PostedOn
+          </td>
+          <td>@comment.Text</td>
+        @if (User.IsInRole(FlyingClub.Common.UserRoles.Admin.ToString()))
+        {
+            <td>@Html.ActionLink("Delete", "DeleteComment", new { commentId = Model.Id }, new { OnClick = "return confirm('Are you sure you want to delete?');" })</td>
+        }
+        </tr>
+  }  
+  </table>
+
+</fieldset>
+<p>
+@Html.ActionLink("Add Comment", "AddComment", new { squawkId = Model.Id })
+</p>

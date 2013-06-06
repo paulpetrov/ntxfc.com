@@ -1,0 +1,36 @@
+﻿@model FlyingClub.WebApp.Models.AircraftByDayViewModel
+     
+@{
+    ViewBag.Title = "Reservation: Aircraft Schedule Display";
+}
+
+@Html.PageTitle(PageTitleImage.Reservation, "Reservations", "Aircraft Schedule Display")
+<p>@Html.ActionLink("Home", "Index", "Home") &gt; @Html.ActionLink("Reservations", "Index", "Reservation") &gt; @Html.ActionLink("Aircraft Availability", "Select", new { aircraftId = @Model.AircraftId }) &gt; @Html.ActionLink("Aircraft Schedule By Week", "AircraftByWeek", new { aircraftId = @Model.AircraftId, startDate = @Model.Date.ToString("MM/dd/yyyy") }) &gt; Aircraft Schedule By Day</p>
+
+<h3>@Model.Aircraft.RegistrationNumber</h3>
+<p>
+    @Html.ActionLink("Create New Reservation", "Create", new { aircraftId = @Model.AircraftId, startDate = @Model.Date.ToString("MM/dd/yyyy") })
+</p>
+<p>
+    @Html.ActionLink("<< Go to Prior Day", "AircraftByDay", new { aircraftId = @Model.AircraftId, date = @Model.PreviousDate.ToString("MM/dd/yyyy") })
+    &nbsp;
+    @Html.ActionLink("Today", "AircraftByDay", new { aircraftId = @Model.AircraftId, date = DateTime.Now.ToString("MM/dd/yyyy") })
+    &nbsp;
+    @Html.ActionLink("Go to Next Day >>", "AircraftByDay", new { aircraftId = @Model.AircraftId, date = @Model.NextDate.ToString("MM/dd/yyyy") })
+</p>
+<table>
+    <tr>
+        <th>@Model.Date.ToString("dddd")<br />@Model.Date.ToString("MM/dd/yyyy")</th>
+        <th>@Model.Aircraft.RegistrationNumber<br /><a href="@Url.Action("Status", "Aircraft", new { id = @Model.AircraftId })" class="@Model.Aircraft.Status">@Model.Aircraft.Status</a></th>
+    </tr>
+    @foreach (var time in Model.TimeList)
+    {
+    <tr>
+        <td>@time.ToString("HH:mm")</td>
+        <td>@(new HtmlString(Model.GetReservationFromTime(time)))</td>
+    </tr>
+    }
+</table>
+<p>
+    @Html.ActionLink("Back to week view", "AircraftByWeek", new { aircraftId = @Model.AircraftId, startDate = @Model.Date.ToString("MM/dd/yyyy")})
+</p>

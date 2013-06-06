@@ -1,0 +1,37 @@
+﻿@model FlyingClub.WebApp.Models.SubmitErrorViewModel
+
+@{
+    ViewBag.Title = "Error";
+}
+
+<p>
+    Sorry, an error occurred while processing your request. The system has collected technical information about the error. 
+</p>
+<p>    
+    If you would like to email club web site administrator please click submit below. You can also provide additional information about error in the field below to help reproduce and resolve problem quickly. Thank you!
+</p>
+@using (Html.BeginForm("SubmitError", "Home"))
+{
+<fieldset>
+<legend>Report Error</legend>
+@Html.HiddenFor(model => model.ExceptionText)
+
+@if (Model.ShowErrorDetails == true)
+{ 
+    <div>
+    @Model.ExceptionText
+    </div>
+}
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.UserText, "Error Description")
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.UserText)
+                        @Html.ValidationMessageFor(model => model.UserText)
+                    </div>
+    <p>
+        <input type="submit" value="Submit" />
+    </p>
+</fieldset>
+
+}

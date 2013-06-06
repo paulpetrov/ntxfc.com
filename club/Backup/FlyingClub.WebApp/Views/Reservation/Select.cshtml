@@ -1,0 +1,33 @@
+﻿@model FlyingClub.WebApp.Models.ReservationSelectViewModel
+      
+@{
+    ViewBag.Title = "Reservation: Aircraft Availability/Booking";
+}
+
+@Html.PageTitle(PageTitleImage.Reservation, "Reservations", "Aircraft Availability/Booking")
+<p>@Html.MvcSiteMap().SiteMapPath()</p>
+
+@using (Html.BeginForm("AircraftByWeek", "Reservation", FormMethod.Get))
+{
+<fieldset>
+    <legend>Selected Aircraft by Week:</legend>
+    <br />
+    <div>
+        <label for="aircraftId">Select Aircraft:</label>
+        @Html.DropDownList("aircraftId", new SelectList(Model.AircraftList, "Id", "RegistrationNumber", Model.AircraftId))
+    </div>
+    <br />
+    <div>
+        <label for="startDate">Enter Starting Date:</label>
+        @Html.TextBox("startDate", @DateTime.Now.ToString("MM/dd/yyyy"))
+    </div>
+    <br />
+    <input type="submit" value="Submit" />
+</fieldset>
+}
+
+<script>
+    $(function () {
+        $("#startDate").datepicker({ showButtonPanel: true });
+    });
+</script>

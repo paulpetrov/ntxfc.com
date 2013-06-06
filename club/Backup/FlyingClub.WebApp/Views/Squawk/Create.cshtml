@@ -1,0 +1,59 @@
+﻿@model FlyingClub.WebApp.Models.CreateSquawkViewModel
+
+@{
+    ViewBag.Title = "Squawk Edit: New Squawk";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.PageTitle(PageTitleImage.Squawk, "Squawk Edit", "New Squawk")
+<p>@Html.MvcSiteMap().SiteMapPath()</p>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Squawk</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AircraftId, "Select Aircraft")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.AircraftId, new SelectList(Model.AircraftList, "Id", "RegistrationNumber", Model.AircraftList.FirstOrDefault(a => a.Id == Model.AircraftId)))
+            @Html.ValidationMessageFor(model => model.AircraftId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Subject)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Subject)
+            @Html.ValidationMessageFor(model => model.Subject)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GroundAircraft, "Ground Aircraft")
+        </div>
+        <div class="editor-field">
+            @Html.CheckBoxFor(model => model.GroundAircraft)
+            @Html.ValidationMessageFor(model => model.GroundAircraft)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

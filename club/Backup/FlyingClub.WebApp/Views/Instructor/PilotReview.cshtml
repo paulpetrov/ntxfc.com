@@ -1,0 +1,102 @@
+﻿@model FlyingClub.WebApp.Models.PilotReviewViewModel
+           
+@{
+    ViewBag.Title = "EditPilotCheckouts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.PilotName Pilot Review</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.MemberId)
+<table style="width:100%;border-style:none">
+<tr>
+    <td width="50%">
+    <fieldset>
+     <legend>Checkouts</legend>
+     <table>
+        <tr>
+            <th>Aircraft</th>
+            <th>Checkout Date</th>
+            <th>Instructor</th>
+            <th></th>
+        </tr>
+     @foreach (var item in Model.AircraftCheckouts)
+     { 
+        <tr>
+            <td>@item.RegistrationNumber</td>
+            <td>@Html.DisplayFor(model => @item.CheckoutDate)</td>
+            <td>@item.InstructorName</td>
+            <td>@Html.ActionLink("Remove", "RemoveCheckout", new { checkoutId = @item.Id })</td>
+        </tr>
+     }
+     </table>
+     <br />
+     <div>
+      @Html.ActionLink("Add New Checkout", "AddCheckout", new { memberId = Model.MemberId, memberName = Model.PilotName })
+     </div>
+    </fieldset>
+    
+    <fieldset>
+        <legend>Stage Checks</legend>
+        <table>
+        <tr>
+            <th>Date</th>
+            <th>Stage</th>
+            <th></th>
+        </tr>
+        @foreach (var stage in Model.StageChecks)
+        { 
+            <tr>
+                <td>@stage.Date.ToString("MM/dd/yyyy")</td>
+                <td>@stage.StageName</td>
+                <td>@if (Model.CanEditStageChecks)
+                    { @Html.ActionLink("Remove", "RemoveStageCheck", new { pilotId = Model.MemberId, stageCheckId = stage.Id }) }</td>
+            </tr>
+        }
+        </table>
+         @if (Model.CanEditStageChecks)
+         {
+         <br />
+         <div>
+          @Html.ActionLink("Add Stage Check", "AddStageCheck", new { pilotId = Model.MemberId })
+         </div>
+         }
+    </fieldset>
+    </td>   
+    <td>
+    <fieldset>
+      <legend>Flight Review</legend>
+      <div class="display-label">Last flight review date</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FlightReview.ReviewDate)
+    </div>
+    <div class="display-label">Instructor</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FlightReview.InstructorName)
+    </div>
+    <div class="display-label">Total Time</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FlightReview.TotalTime)
+    </div>
+    <div class="display-label">Retract Time</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FlightReview.RetractTime)
+    </div>
+    <div class="display-label">Review Notes</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FlightReview.Notes)
+    </div>
+    <br />
+    <div style="text-align:right">
+      @Html.ActionLink("Update", "UpdateFlightReview", new { pilotId = Model.MemberId })
+     </div>
+    </fieldset>
+    </td>
+</tr>
+</table>
+     <div>
+      @Html.ActionLink("Back to Pilots List", "ReviewPilots")
+     </div>
+}

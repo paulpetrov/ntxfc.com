@@ -1,0 +1,93 @@
+﻿@model FlyingClub.WebApp.Models.ReservationViewModel
+
+@{
+    ViewBag.Title = "Reservation Edit: New Reservation";
+    Html.EnableClientValidation();
+}
+
+@Html.PageTitle(PageTitleImage.Reservation, "Reservation Edit", "New Reservation")
+<p>@Html.MvcSiteMap().SiteMapPath()</p>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Reservation</legend>
+        
+        @Html.HiddenFor(model => model.MemberId)
+        @Html.HiddenFor(model => model.UrlReferrer)
+
+        <div class="editor-label">
+            <label for="member">Aircraft</label>
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.AircraftId, new SelectList(Model.AircraftList, "Id", "RegistrationNumber", Model.AircraftId))
+            @Html.ValidationMessageFor(model => model.AircraftId)
+        </div>
+
+        <div class="editor-label">
+            <label for="member">Instructor</label>
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.InstructorId, new SelectList(Model.InstructorList, "Id", "FullName", Model.InstructorList.FirstOrDefault(o => o.Id == 0)))
+            @Html.ValidationMessageFor(model => model.InstructorId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StartDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StartDate) 
+            @Html.DropDownListFor(model => model.StartTime, new SelectList(Model.TimeList, "Value","Text", Model.StartTime))
+            @Html.ValidationMessageFor(model => model.StartDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EndDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EndDate)
+            @Html.DropDownListFor(model => model.EndTime, new SelectList(Model.TimeList,"Value","Text", Model.EndTime))
+            @Html.ValidationMessageFor(model => model.EndDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Destination)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Destination)
+            @Html.ValidationMessageFor(model => model.Destination)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Notes, "Reservation Notes:")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Notes)
+            @Html.ValidationMessageFor(model => model.Notes)
+        </div>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+<p>
+    <a href="@Model.UrlReferrer">Back</a>
+</p>
+<script>
+    $(function () {
+        $("#StartDate").datepicker({
+            showButtonPanel: true,
+            onSelect: function (dateText, inst) {
+                if (!$("#EndDate").is(':blank')) {
+                    var startDate = Date.parse(dateText);
+                    var endDate = Date.parse($("#EndDate").val());
+                    if (startDate > endDate) { $("#EndDate").val(dateText); }
+                }
+            }
+        });
+        $("#EndDate").datepicker({ showButtonPanel: true });
+    });
+</script>

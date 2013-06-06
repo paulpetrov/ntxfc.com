@@ -1,0 +1,142 @@
+﻿@model FlyingClub.WebApp.Models.AircraftDetailsViewModel
+
+@{
+    ViewBag.Title = String.Concat("Aircraft: ", Model.Aircraft.Name);
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.PageTitle(PageTitleImage.Squawk, "Aircraft", Model.Aircraft.Name)
+<p>@Html.MvcSiteMap().SiteMapPath()</p>
+
+<fieldset>
+    <legend>Aircraft</legend>
+<table border="0" cellspacing="0" cellpadding="0" class="noborder">
+    <tr>
+      <td><div class="display-label">Registration Number</div></td>
+      <td> 
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Aircraft.RegistrationNumber)
+        </div>
+      </td>
+    </tr>
+    <tr>
+        <td><div class="display-label">Make</div></td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Aircraft.Make)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><div class="display-label">Model</div></td>
+        <td>
+            <div class="display-field">@Html.DisplayFor(model => model.Aircraft.Model)</div>
+        </td>
+    </tr>
+    <tr>
+        <td><div class="display-label">Type Designation</div></td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Aircraft.TypeDesignation)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><div class="display-label">Name</div></td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Aircraft.Name)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><div class="display-label">Year</div></td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Aircraft.Year)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><div class="display-label">Max Gross Weight</div></td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Aircraft.MaxGrossWeight)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><div class="display-label">Fuel Capacity</div></td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Aircraft.FuelCapacity)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><div class="display-label">Useful Load</div></td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Aircraft.UsefulLoad)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><div class="display-label">Cruise Speed</div></td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Aircraft.CruiseSpeed)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><div class="display-label">Max Range</div></td>
+        <td>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Aircraft.MaxRange)
+        </div>
+        </td>
+    </tr>
+    <tr>
+        <td><div class="display-label">Description</div></td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Aircraft.Description)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><div class="display-label">Equipment List</div></td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Aircraft.EquipmentList)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><div class="display-label">Checkout Requirements</div></td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Aircraft.CheckoutRequirements)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><div class="display-label">Hourly Rate</div></td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Aircraft.HourlyRate)
+            </div>
+        </td>
+    </tr>
+</table>
+
+  
+</fieldset>
+<p>
+@if (User.IsInRole(FlyingClub.Common.UserRoles.Admin.ToString()))
+{ 
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Aircraft.Id }) @:| @Html.ActionLink("Delete", "Delete", new { id = Model.Aircraft.Id }, new { OnClick = "return confirm('Are you sure you want to delete?');" })
+}
+    @Html.ActionLink("Back to List", "Index")
+</p>

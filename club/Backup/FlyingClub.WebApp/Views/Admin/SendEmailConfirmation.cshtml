@@ -1,0 +1,11 @@
+﻿@model FlyingClub.WebApp.Models.SendEmailConfirmationModel
+@{
+    ViewBag.Title = "SendEmailConfirmation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Send Email Confirmation</h2>
+<br />
+<div>
+ Email was sent to @Model.SentNumber.ToString() members.
+</div>

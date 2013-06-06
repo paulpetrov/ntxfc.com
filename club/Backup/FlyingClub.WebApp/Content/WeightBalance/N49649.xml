@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<wb>
+  <aircraft id="N49649">
+    <EmptyWeight>1160.2</EmptyWeight>
+    <MaxGrossWeight>1670</MaxGrossWeight>
+    <FuelMax>24.5</FuelMax>
+    <FuelTabs>0</FuelTabs>
+    <Baggage1Max>120</Baggage1Max>
+    <Baggage2Max>40</Baggage2Max>
+    <arms>
+      <EmptyCG>29.77</EmptyCG>
+      <Fuel>42.18</Fuel>
+      <Front1>39.0</Front1>
+      <Baggage1>64.0</Baggage1>
+      <Baggage2>84.0</Baggage2>
+    </arms>
+  </aircraft>
+</wb>

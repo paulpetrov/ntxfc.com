@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Message</h2>
+<table style="width: 100%;" class="dashboard">
+    <tr>
+        <td rowspan="2" width="35%">
+            <h2 class="notams">Club Notams</h2>
+            <p>Welcome to the new North Texas Flying Club website. We are working on completing all areas of the site. If you experience any issues please <a href="mailto:gack1@verizon.net">contact us</a>.</p>
+            <h3>2012-08-30</h3>
+            <p>New feature: Aircraft Maintenance Logs. Owners can upload logs to be available for pilots to review prior to scheduling flight. To access logs page use Aircraft Status page and select "View Log" link in the upper left corner of the Maintenance Information block.</p>
+            <h3>2012-03-12</h3>
+            <p>Weight and Balance calculator is added. Look for W&B link in the Operational Notes section of the Aircraft Status page. At this moment it only works for several aircraft (N8185E, N8142H, N49649). Once data is obtained this feature will be available for the rest of the fleet.</p>
+        </td>
+        <td>
+            <h2 class="reservation">Flight Planing</h2>
+            <ul>
+                <li>@Html.ActionLink("Aircraft Status", "Status", "Aircraft")</li>
+                <li>@Html.ActionLink("Aircraft Availability/Reservations", "Select", "Reservation")</li>
+                <li>@Html.ActionLink("My Aircraft Reservations", "Index", "Reservation")</li>
+                <li>@Html.ActionLink("Squawk Reporting", "ListActiveSquawks", "Squawk")</li>
+                <li>@Html.ActionLink("Aircraft Rates", "GetRates", "Aircraft")</li>
+            </ul>
+        </td>
+        <td>
+            <h2 class="chat">Hangar Flying</h2>
+            Coming Soon...
+            <!--ul>
+                <li><a href="http://dev.ntxfc.com/forums/">Forums</a></li>
+                <li><a href="http://dev.ntxfc.com/events/">Events</a></li>
+                <li><a href="http://dev.ntxfc.com/forums/forumdisplay.php/3-Buddy-Board">Buddy Board</a></li>
+            </ul-->
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h2 class="account">Member Account Information</h2>
+            <ul>
+                <li>@Html.ActionLink("My Member Profile Information", "MyProfile", "Member")</li>
+                <li>@Html.ActionLink("Change Password","ChangeMyPassword","Account")</li>
+                <li>@Html.ActionLink("Change Email", "ChangeEmail", "Account")</li>
+            </ul>
+        </td>
+        <td>
+            <h2 class="group">Club Membership and Contacts</h2>
+            <ul>
+                <li>@Html.ActionLink("All Club Members", "Index", "Member")</li>
+                <li>@Html.ActionLink("Aircraft Owners", "ListOwners", "Aircraft")</li>
+                <li>@Html.ActionLink("Instructors", "ListInstructors", "Instructor")</li>
+                <li>@Html.ActionLink("Mailing Address for Fuel Receipts", "FuelReceipts", "Home")</li>
+            </ul>
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,73 @@
+﻿@model FlyingClub.WebApp.Models.SquawksForAircraftViewModel
+
+@{
+    ViewBag.Title = "Squawks For Aircraft";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.PageTitle(PageTitleImage.Squawk, "Squawks", Model.Name)
+<p>@Html.MvcSiteMap().SiteMapPath()</p>
+
+<p>
+    @Html.ActionLink("Add New Squawk", "Create", new { aircraftId = Model.AircraftId })
+</p>
+<table>
+    <tr>
+        <th>
+            Aircraft
+        </th>
+        <th>
+            Date Posted
+        </th>
+        <th>
+            Subject
+        </th>
+        <th>
+            Posted By
+        </th>
+        <th>
+            Status
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Squawks)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TailNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+        
+        @if (User.IsInRole("Admin"))
+        { 
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) @:|
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { OnClick = "return confirm('Are you sure you want to delete?');" })       
+        }
+        
+        @if (Model.CanResolveSquawks)
+        {
+            if (item.Status == FlyingClub.Common.SquawkStatus.Open.ToString())
+            {
+                @Html.ActionLink("Resolve", "ResolveSquawk", new { squawkId = item.Id }) @:|
+            }
+        }
+        @Html.ActionLink("Details", "Details", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+

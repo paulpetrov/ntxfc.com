@@ -1,0 +1,120 @@
+﻿@model FlyingClub.WebApp.Models.MemberListViewModel
+
+@{
+    ViewBag.Title = "Members: Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*        <script src="@Url.Content("~/Scripts/dhtmlxGrid/codebase/dhtmlxcommon.js")" type="text/javascript" charset="utf-8"></script>
+        <script src="@Url.Content("~/Scripts/dhtmlxGrid/codebase/dhtmlxgrid.js")" type="text/javascript" charset="utf-8"></script>
+        <script src="@Url.Content("~/Scripts/dhtmlxGrid/codebase/dhtmlxgridcell.js")" type="text/javascript" charset="utf-8"></script>
+        <script src="@Url.Content("~/Scripts/dhtmlxGrid/codebase/ext/dhtmlxgrid_filter.js")" type="text/javascript" charset="utf-8"></script>
+        
+        
+        <link rel="stylesheet" href="@Url.Content("~/Scripts/dhtmlxGrid/codebase/dhtmlxgrid.css")" type="text/css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="@Url.Content("~/Scripts/dhtmlxGrid/codebase/skins/dhtmlxgrid_dhx_skyblue.css")" type="text/css" media="screen" charset="utf-8">*@
+
+
+<img src="@Url.Content("~/Content/themes/base/images/person.png")" align="left" alt="Members" class="pageTitleIcon" />
+<h1 class="pageType">Members</h1>
+<h2 class="pageDescription">Home</h2>
+<div style="clear: both;"></div>
+
+<p>
+    @Html.ActionLink("Home", "Index", "Home") &gt; Members
+</p>
+
+@*        <div id="grid_here" style="width:800px; height:400px;">
+        </div>
+        <script type="text/javascript" charset="utf-8">
+            var grid = new dhtmlXGridObject("grid_here");
+            grid.setImagePath("/javascripts/codebase/imgs/");
+            grid.setHeader("First Name, Last Name, Email, Email 2, Phone, Alt. Phone, City");
+            grid.attachHeader("#text_filter, #text_filter"); 
+            grid.setColSorting("str,str,str");  
+            grid.setInitWidths("100,100,*");
+            grid.setSkin("dhx_skyblue");
+            grid.init();
+            grid.load("/Member/MembersXml?=" + grid.uid());
+        </script>
+*@
+
+
+@if (User.IsInRole(FlyingClub.Common.UserRoles.Admin.ToString()))
+{ 
+    <div>@Html.ActionLink("Add New Member", "Create") |
+      @if(!Model.ShowInactive)
+      {
+          @Html.ActionLink("Show Inactive", "ListMembers", new { showInactive = true })
+      }
+      else
+      {
+          @Html.ActionLink("Show Active", "ListMembers", new { showInactive = false })
+      }
+    </div>
+}    
+<br /><br />
+<table>
+    <tr>
+        <th>
+            PIN
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Email
+        </th>
+        <th>Alt. Email</th>
+        <th>
+            Phone
+        </th>
+        <th>
+            Alt. Phone
+        </th>
+        <th>
+            City
+        </th>
+        @if (User.IsInRole(FlyingClub.Common.UserRoles.Admin.ToString()))
+        {
+        <th>Status</th>
+        <th></th>
+        }
+    </tr>
+
+@foreach (var item in Model.Members)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PIN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+        <td>
+            <a href="mailto:@item.PrimaryEmail">@item.PrimaryEmail</a>
+        </td>
+        <td>
+            <a href="mailto:@item.SecondaryEmail">@item.SecondaryEmail</a>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AltPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        @if (User.IsInRole(FlyingClub.Common.UserRoles.Admin.ToString()))
+        {
+        <td>@item.Status</td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { OnClick = "return confirm('Are you sure you want to delete?');" })
+        </td>
+        }
+    </tr>
+}
+</table>

@@ -1,0 +1,14 @@
+﻿@Response.ContentType = "text/xml";
+<rows>
+    @foreach (var user in Model) { 
+        <row id="@user.Id">
+            <cell><![CDATA[@user.FirstName]]></cell>
+            <cell><![CDATA[@user.LastName]]></cell>
+            <cell><![CDATA[@user.PrimaryEmail]]></cell>
+            <cell><![CDATA[@user.SecondaryEmail]]></cell>
+            <cell><![CDATA[@user.Phone]]></cell> 
+            <cell><![CDATA[@user.AltPhone]]></cell> 
+            <cell><![CDATA[@user.City]]></cell>      
+        </row>
+    }
+</rows>

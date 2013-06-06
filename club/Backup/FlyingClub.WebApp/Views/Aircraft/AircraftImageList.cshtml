@@ -1,0 +1,30 @@
+﻿@model FlyingClub.WebApp.Models.AircraftImageListViewModel
+
+<h3>Images</h3>
+<p>
+    @Html.ActionLink("Add", "AddImage")
+</p>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.ImageList) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditImage", new { id=item.Id }) |
+            @Html.ActionLink("Details", "ViewImage", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "DeleteImage", new { id = item.Id }, new { OnClick = "return confirm('Are you sure you want to delete?');" })
+        </td>
+    </tr>
+}
+
+</table>

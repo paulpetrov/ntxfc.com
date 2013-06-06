@@ -1,0 +1,31 @@
+﻿@model ICollection<FlyingClub.WebApp.Models.AircraftListItemViewModel>
+@{
+    ViewBag.Title = "Aircraft Rates";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Aircraft Rates</h2>
+<table>
+    <tr>
+        <th></th>
+        <th>Reg. Number</th>
+        <th>Model</th>
+        <th>Checkout</th>
+        <th>Rate</th>
+    </tr>
+@foreach (var ac in @Model)
+{ 
+    <tr>
+        <td>
+            @if(ac.ImageUrl != null) 
+            {
+                <img alt="@ac.RegistrationNumber" src="@ac.ImageUrl" />
+            }
+         </td>
+        <td>@ac.RegistrationNumber</td>
+        <td>@ac.Make @ac.Model</td>
+        <td>@ac.CheckoutRequirements</td>
+        <td>@ac.HourlyRate $/hr</td>
+    </tr>
+}
+</table>

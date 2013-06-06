@@ -1,0 +1,109 @@
+﻿@model FlyingClub.Data.Model.Entities.Member
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="pageTitle"><img src="@Url.Content("~/Content/themes/base/images/person.png")" align="left" alt="Delete" class="sectionIcon" /> Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Member</legend>
+
+    <div class="display-label">LoginId</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LoginId)
+    </div>
+
+    <div class="display-label">Status</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Status)
+    </div>
+
+    <div class="display-label">FirstName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FirstName)
+    </div>
+
+    <div class="display-label">LastName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastName)
+    </div>
+
+    <div class="display-label">PrimaryEmail</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PrimaryEmail)
+    </div>
+
+    <div class="display-label">SecondaryEmail</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SecondaryEmail)
+    </div>
+
+    <div class="display-label">Phone</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Phone)
+    </div>
+
+    <div class="display-label">AltPhone</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AltPhone)
+    </div>
+
+    <div class="display-label">AddressLine_1</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AddressLine_1)
+    </div>
+
+    <div class="display-label">AddressLine_2</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AddressLine_2)
+    </div>
+
+    <div class="display-label">City</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.City)
+    </div>
+
+    <div class="display-label">Zip</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Zip)
+    </div>
+
+    <div class="display-label">MemberSince</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MemberSince)
+    </div>
+
+    <div class="display-label">LastMedical</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastMedical)
+    </div>
+
+    <div class="display-label">TotalHours</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TotalHours)
+    </div>
+
+    <div class="display-label">RetractHours</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RetractHours)
+    </div>
+
+    <div class="display-label">EmergencyName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmergencyName)
+    </div>
+
+    <div class="display-label">EmergencyPhone</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmergencyPhone)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

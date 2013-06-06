@@ -1,0 +1,105 @@
+﻿@model FlyingClub.WebApp.Models.EditMemberViewModel
+
+@{
+    ViewBag.Title = String.Concat("Member Edit: ", Model.FirstName, " ", Model.LastName);
+    Html.EnableClientValidation();
+}
+
+@Html.PageTitle(PageTitleImage.Member, "Member Edit", String.Format("{0} {1}", Model.FirstName, Model.LastName))
+<p>@Html.MvcSiteMap().SiteMapPath()</p>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    
+    <fieldset>
+        <legend>Member</legend>
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.PrimaryEmail)
+
+        <div class="display-label">@Html.LabelFor(model => model.FirstName)</div>
+        <div class="display-field">
+            @Html.EditorFor(model => model.FirstName)
+        </div>
+
+        <div class="display-label">@Html.LabelFor(model => model.LastName)</div>
+        <div class="display-field">
+            @Html.EditorFor(model => model.LastName)
+        </div>
+
+        <div class="display-label">@Html.LabelFor(model => model.Phone)</div>
+        <div class="display-field">
+            @Html.EditorFor(model => model.Phone)
+        </div>
+
+        <div class="display-label">@Html.LabelFor(model => model.AltPhone)</div>
+        <div class="display-field">
+            @Html.EditorFor(model => model.AltPhone)
+        </div>
+
+        <div class="display-label">@Html.LabelFor(model => model.AddressLine_1)</div>
+        <div class="display-field">
+            @Html.EditorFor(model => model.AddressLine_1)
+        </div>
+
+        <div class="display-label">@Html.LabelFor(model => model.AddressLine_2)</div>
+        <div class="display-field">
+            @Html.EditorFor(model => model.AddressLine_2)
+        </div>
+
+        <div class="display-label">@Html.LabelFor(model => model.City)</div>
+        <div class="display-field">
+            @Html.EditorFor(model => model.City)
+        </div>
+
+        <div class="display-label">@Html.LabelFor(model => model.State)</div>
+        <div class="display-field">
+            @Html.EditorFor(model => model.State)
+        </div>
+
+        <div class="display-label">@Html.LabelFor(model => model.Zip)</div>
+        <div class="display-field">
+            @Html.EditorFor(model => model.Zip)
+        </div>
+
+        <div class="display-label">@Html.LabelFor(model => model.LastMedical)</div>
+        <div class="display-field">
+            @Html.EditorFor(model => model.LastMedical)
+        </div>
+
+        <div class="display-label">@Html.LabelFor(model => model.TotalHours)</div>
+        <div class="display-field">
+            @Html.EditorFor(model => model.TotalHours)
+        </div>
+
+        <div class="display-label">@Html.LabelFor(model => model.RetractHours)</div>
+        <div class="display-field">
+            @Html.EditorFor(model => model.RetractHours)
+        </div>
+
+        <div class="display-label">@Html.LabelFor(model => model.EmergencyName)</div>
+        <div class="display-field">
+            @Html.EditorFor(model => model.EmergencyName)
+        </div>
+
+        <div class="display-label">@Html.LabelFor(model => model.EmergencyPhone)</div>
+        <div class="display-field">
+            @Html.EditorFor(model => model.EmergencyPhone)
+        </div>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+    <p>
+        @Html.ActionLink("Back to Home", "Index", "Home")
+    </p>
+}
+
+<script>
+    $(function () {
+        $("#LastMedical").datepicker({ showButtonPanel: true });
+    });
+</script>

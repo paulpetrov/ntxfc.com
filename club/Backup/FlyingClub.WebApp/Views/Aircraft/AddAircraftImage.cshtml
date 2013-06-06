@@ -1,0 +1,47 @@
+﻿@model FlyingClub.WebApp.Models.AircraftImageViewModel
+
+@{
+    ViewBag.Title = "Add Aircraft Image";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<h2>Add Aircraft Image</h2>
+
+@using (Html.BeginForm("AddImage", "Aircraft", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.AircraftId)
+<fieldset>
+<legend>New Image</legend>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Title, "Image Title")
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Title)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Type, "Image Type")
+    </div>
+    <div class="editor-field">
+        @Html.DropDownListFor(model => model.Type, new SelectList(@Model.ImageTypes, "ExteriorMain"))
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Description, "Description")
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Description)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.FileName, "File")
+    </div>
+    <div class="editor-field">
+        <input type="file" id="File" name="File" />
+    </div>
+    <p>
+        <input type="submit" value="Save" />
+    </p>
+</fieldset>
+}

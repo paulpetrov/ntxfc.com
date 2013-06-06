@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "RemoveOwner";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Remove Aircraft Owner</h2>
+
+<h3>You are about to remove owner of the airplane. Click "Remove" to confirm or "Cancel" to cancel operation.</h3>
+<table>
+<tr>
+<td>@Html.ActionLink("Remove", "RemoveOwner", new { aircraftId = ViewBag.aircraftId, ownerId = ViewBag.ownerId })</td>
+<td>@Html.ActionLink("Cancel", "Edit", new { aircraftId = ViewBag.aircraftId })</td>
+</tr>
+</table>

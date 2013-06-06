@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<wb>
+  <aircraft id="N8142H">
+    <EmptyWeight>1476</EmptyWeight>
+    <MaxGrossWeight>2325</MaxGrossWeight>
+    <FuelMax>48</FuelMax>
+    <FuelTabs>34</FuelTabs>
+    <Baggage1Max>200</Baggage1Max>
+    <arms>
+      <EmptyCG>85.02</EmptyCG>
+      <Fuel>95.0</Fuel>
+      <Front1>80.5</Front1>
+      <Rear>118.1</Rear>
+      <Baggage1>142.8</Baggage1>
+    </arms>
+  </aircraft>
+</wb>

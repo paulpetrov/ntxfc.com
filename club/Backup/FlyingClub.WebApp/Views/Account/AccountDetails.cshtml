@@ -1,0 +1,43 @@
+﻿@model FlyingClub.WebApp.Models.AccountViewModel
+
+@{
+    ViewBag.Title = String.Format("Account: {0}", Model.UserName);
+}
+
+@Html.PageTitle(PageTitleImage.Member, "Account", Model.UserName)
+<p>@Html.MvcSiteMap().SiteMapPath()</p>
+
+<fieldset>
+    <legend>Account</legend>
+
+    <div class="display-label">Member PIN</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MemberPIN)
+    </div>
+
+    <div class="display-label">Username</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserName)
+    </div>
+
+    <div class="display-label">Email</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+    <div class="display-label">Secondary Email</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email2)
+    </div>
+</fieldset>
+
+<p>
+    @if (User.IsInRole(FlyingClub.Common.UserRoles.Admin.ToString()))
+    { 
+            @Html.ActionLink("Edit", "Edit", new { id = Model.LoginId }) @:| @Html.ActionLink("Delete", "Delete", new { id = Model.LoginId }, new { OnClick = "return confirm('Are you sure you want to delete?');" }) |
+            if (!Model.HasMember)
+            { 
+                @Html.ActionLink("Create Member", "Create", "Member", new { loginId = Model.LoginId }, null)
+            }
+    }
+    @Html.ActionLink("Back to List", "Index")
+</p>

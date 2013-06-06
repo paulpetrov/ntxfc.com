@@ -1,0 +1,38 @@
+﻿@model FlyingClub.WebApp.Models.SendMemberEmailModel
+@{
+    ViewBag.Title = "Send Club Email";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Send Club Email</h2>
+<fieldset>
+    <legend></legend>
+    @using (Html.BeginForm("SendMassEmail", "Admin"))
+    {
+        @Html.ValidationSummary(true)
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SendToRoles, "Send email to:")
+            @Html.ValidationMessageFor(model => model.SendToRoles)
+        </div>
+        <div class="editor-field">
+            @Html.CheckBoxListFor(model => model.SendToRoles, new MultiSelectList(Model.MemberRoles, "Name", "PluralName"))
+            @Html.HiddenFor(model => model.MemberRoles)
+        </div>   
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Subject, "Subject:")
+        </div>
+        <div>
+            @Html.TextBoxFor(model => model.Subject, new { style = "width:300px;" })
+            @Html.ValidationMessageFor(model => model.Subject)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EmailText, "Enter email text:")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EmailText)
+            @Html.ValidationMessageFor(model => model.EmailText)
+        </div>
+        <p>
+            <input type="submit" value="Submit" />
+        </p>
+    }
+</fieldset>
