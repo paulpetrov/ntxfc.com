@@ -78,17 +78,31 @@ namespace FlyingClub.WebApp.Models
         public int AircraftId { get; set; }
         public string RegistrationNumber { get; set; }
         public int PostedById { get; set; }
+
+        [Display(Name = "Posted by"), DisplayFormat(NullDisplayText = "-")]
         public string PostedBy { get; set; }
+
+        [Display(Name = "Posted on"), DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}", NullDisplayText = "-")]
         public DateTime PostedOn { get; set; }
+
+        [Display(Name = "Status"), DisplayFormat(NullDisplayText = "-")]
         public string Status { get; set; }
 
+        [Display(Name = "Subject"), DisplayFormat(NullDisplayText = "-")]
         public string Subject { get; set; }
-        [DataType(DataType.MultilineText)]
+
+        [DataType(DataType.MultilineText), Display(Name = "Description"), DisplayFormat(NullDisplayText = "-")]
         public string Description { get; set; }
-        [DataType(DataType.MultilineText)]
+
+        [DataType(DataType.MultilineText), Display(Name = "Resolution Notes"), DisplayFormat(NullDisplayText = "-")]
         public string ResolutionNotes { get; set; }
+
+        [Display(Name = "Resolved on"), DisplayFormat(NullDisplayText = "-")]
         public DateTime? ResolvedOn { get; set; }
+
         public int ResolvedById { get; set; }
+
+        [Display(Name = "Resolved by"), DisplayFormat(NullDisplayText = "-")]
         public string ResolvedBy { get; set; }
 
         public List<SquawkCommentViewModel> Comments { get; set; }
@@ -99,8 +113,13 @@ namespace FlyingClub.WebApp.Models
         public int Id { get; set; }
         public int SquawkId { get; set; }
         public int PostedById { get; set; }
+
+        [Display(Name = "Posted by"), DisplayFormat(NullDisplayText = "-")]
         public string PostedBy { get; set; }
+
+        [Display(Name = "Posted on"), DisplayFormat(NullDisplayText = "-")]
         public DateTime PostedOn { get; set; }
+
         [DataType(DataType.MultilineText)]
         public string Text { get; set; }
     }

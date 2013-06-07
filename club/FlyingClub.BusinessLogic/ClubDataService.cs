@@ -709,7 +709,11 @@ namespace FlyingClub.BusinessLogic
         {
             DateTime rangeStartDate = startDate.Add(new TimeSpan(06, 00, 00)); // Start Date at 6am
             DateTime rangeEndDate = startDate.Add(new TimeSpan(days, 22, 00, 00)); // End Date at 10pm
-            return _repository.GetQuery<Reservation>(x => x.AircraftId == aircraftId && (x.StartDate.CompareTo(rangeEndDate) <= 0 && x.EndDate.CompareTo(rangeStartDate) >= 0)).Include("Aircraft").Include("Member").ToList();
+            return _repository.GetQuery<Reservation>(x => x.AircraftId == aircraftId && (x.StartDate.CompareTo(rangeEndDate) <= 0 && x.EndDate.CompareTo(rangeStartDate) >= 0))
+                .Include("Aircraft")
+                .Include("Member")
+                .OrderByDescending(x => x.StartDate)
+                .ToList();
         }
 
         public bool IsValidReservationDateRange(int reservationId, int aircraftId, DateTime startDate, DateTime endDate)
@@ -781,6 +785,7 @@ namespace FlyingClub.BusinessLogic
             return _repository.GetQuery<Squawk>().Where(x => x.AircraftId == id)
             .Include(s => s.Aircraft)
             .Include(s => s.PostedBy)
+            .OrderByDescending(s => s.PostedOn)
             .ToList();
         }
 

@@ -13,7 +13,7 @@ namespace FlyingClub.Data.Model
     /// <summary>
     /// Use strategies: DropCreateDatabaseIfModelChanges<> or DropCreateDatabaseAlways<>
     /// </summary>
-    public class NtxfcDbContextInitializer : DropCreateDatabaseIfModelChanges<NtxfcDbContext>
+    public class NtxfcDbContextInitializer : DropCreateDatabaseAlways<NtxfcDbContext>
     {
         private NtxfcDbContext _dbContext;
 
@@ -26,7 +26,7 @@ namespace FlyingClub.Data.Model
             CreateAircraft();
             CreateReservation();
 
-            AccessDbImporter oldDbImport = new AccessDbImporter();
+            //AccessDbImporter oldDbImport = new AccessDbImporter();
         }
 
         public void CreateLoginsAndMembers()

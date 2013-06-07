@@ -12,31 +12,69 @@ namespace FlyingClub.WebApp.Models
     {
         public int Id { get; set; }
         public int LoginId { get; set; }
+
+        [Display(Name = "Username"), DisplayFormat(NullDisplayText = "-")]
         public string UserName { get; set; }
+
+        [Display(Name = "PIN"), DisplayFormat(NullDisplayText = "-")]
         public string MemberPIN { get; set; }
+
+        [Display(Name = "Status"), DisplayFormat(NullDisplayText = "-")]
         public string Status { get; set; }
+
+        [Display(Name = "First Name"), DisplayFormat(NullDisplayText = "-")]
         public string FirstName { get; set; }
+
+        [Display(Name = "Last Name"), DisplayFormat(NullDisplayText = "-")]
         public string LastName { get; set; }
+
         public string DisplayName 
         { 
             get { return string.Format("{0} {1}", FirstName, LastName); } 
         }
+
+        [Display(Name = "Email"), DisplayFormat(NullDisplayText = "-")]
         public string PrimaryEmail { get; set; }
+
+        [Display(Name = "Alt. email"), DisplayFormat(NullDisplayText = "-")]
         public string SecondaryEmail { get; set; }
+
+        [Display(Name = "Phone"), DisplayFormat(NullDisplayText="-")]
         public string Phone { get; set; }
+
+        [Display(Name = "Alt. Phone"), DisplayFormat(NullDisplayText = "-")]
         public string AltPhone { get; set; }
+
+        [Display(Name = "Address 1"), DisplayFormat(NullDisplayText="-")]
         public string AddressLine_1 { get; set; }
+
+        [Display(Name = "Address 2"), DisplayFormat(NullDisplayText = "-")]
         public string AddressLine_2 { get; set; }
+
+        [Display(Name = "City"), DisplayFormat(NullDisplayText = "-")]
         public string City { get; set; }
+
+        [Display(Name = "Zip"), DisplayFormat(NullDisplayText = "-")]
         public string Zip { get; set; }
-        [Display(Name = "Member Since"), DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+
+        [Display(Name = "Member Since"), DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}", NullDisplayText = "-")]
         public DateTime? MemberSince { get; set; }
-        [Display(Name = "Member Since"), DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+
+        [Display(Name = "Last Medical"), DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}", NullDisplayText = "-")]
         public DateTime? LastMedical { get; set; }
+
+        [Display(Name = "Total Hours"), DisplayFormat(NullDisplayText = "-")]
         public int? TotalHours { get; set; }
+
+        [Display(Name = "Retract Hours"), DisplayFormat(NullDisplayText = "-")]
         public int? RetractHours { get; set; }
+
+        [Display(Name = "Emergency Name"), DisplayFormat(NullDisplayText = "-")]
         public string EmergencyName { get; set; }
+
+        [Display(Name = "Emergency Phone"), DisplayFormat(NullDisplayText = "-")]
         public string EmergencyPhone { get; set; }
+
         public string PilotStatus { get; set; }
         public DateTime? FlightReviewLastDate { get; set; }
         public int FlightReviewInstructorId { get; set; }

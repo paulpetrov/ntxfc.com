@@ -67,12 +67,17 @@ namespace FlyingClub.WebApp.Controllers
                 PostedBy = squawk.PostedBy.FullName,
                 PostedOn = squawk.PostedOn,
                 RegistrationNumber = squawk.Aircraft.RegistrationNumber,
-                //RespondedBy = 
                 ResolvedOn = squawk.ResolvedOn,
                 ResolutionNotes = squawk.ResolutionNotes,
                 Status = squawk.Status,
                 Subject = squawk.Subject
             };
+
+            if (squawk.ResolvedById != null)
+            {
+                Member resolvedBy = _dataService.GetMember((int)squawk.ResolvedById);
+                model.ResolvedBy = resolvedBy.FullName;
+            }
 
             foreach (var comment in squawk.Comments)
             {

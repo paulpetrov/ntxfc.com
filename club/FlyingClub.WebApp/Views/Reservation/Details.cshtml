@@ -9,42 +9,42 @@
 
 <fieldset>
     <legend>Reservation</legend>
-
-    <div class="display-label">Member</div>
-    <div class="display-field">
+<div class="detail-block">
+    <div class="detail-label">Pilot</div>
+    <div class="detail-field">
         @Html.DisplayFor(model => model.Member.FirstName) @Html.DisplayFor(model => model.Member.LastName)
     </div>
 
-    <div class="display-label">Aircraft</div>
-    <div class="display-field">
+    <div class="detail-label">Aircraft</div>
+    <div class="detail-field">
         @Html.DisplayFor(model => model.Aircraft.RegistrationNumber)
     </div>
 
-    <div class="display-label">Start Date</div>
-    <div class="display-field">
+    <div class="detail-label">Start Date</div>
+    <div class="detail-field">
         @Model.StartDate.ToString("M/dd/yyyy HH:mm")
     </div>
 
-    <div class="display-label">End Date</div>
-    <div class="display-field">
+    <div class="detail-label">End Date</div>
+    <div class="detail-field">
         @Model.EndDate.ToString("M/dd/yyyy HH:mm")
     </div>
 
-    <div class="display-label">Instructor</div>
-    <div class="display-field">
+    <div class="detail-label">Instructor</div>
+    <div class="detail-field">
         @Html.DisplayFor(model => model.Instructor.FullName)
     </div>
 
-    <div class="display-label">Destination</div>
-    <div class="display-field">
+    <div class="detail-label">Destination</div>
+    <div class="detail-field">
         @Html.DisplayFor(model => model.Destination)
     </div>
 
-    <div class="display-label">Notes:</div>
-    <div class="display-field">
+    <div class="detail-label">Notes:</div>
+    <div class="detail-field">
         @Html.DisplayFor(model => model.Notes)
     </div>
-
+</div>
 </fieldset>
 <p>
     @if (Model.CanEdit()) {

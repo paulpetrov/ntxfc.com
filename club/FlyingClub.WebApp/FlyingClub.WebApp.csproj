@@ -21,6 +21,10 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,7 +38,7 @@
     <DeployIisAppPath>Default Web Site/FlyingClub.WebApp</DeployIisAppPath>
     <PublishDatabaseSettings>
       <Objects>
-        <ObjectGroup Name="DefaultDb-Deployment" Order="1">
+        <ObjectGroup Name="DefaultDb-Deployment" Order="1" Enabled="True">
           <Destination Path="Data Source=50.61.227.2%3bInitial Catalog=ntxfc_club%3bUser ID=ntxfc_user%3bPassword=tracon124.3" />
           <Object Type="dbFullSql">
             <PreSource Path="Data Source=|DataDirectory|ntxfc_main.sdf" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
@@ -50,7 +54,7 @@
         </ObjectGroup>
       </Objects>
     </PublishDatabaseSettings>
-    <PublishDatabases>true</PublishDatabases>
+    <PublishDatabases>false</PublishDatabases>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -838,7 +842,7 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
+          <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>65509</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost</IISUrl>

@@ -29,7 +29,7 @@
         <script type="text/javascript" charset="utf-8">
             var grid = new dhtmlXGridObject("grid_here");
             grid.setImagePath("/javascripts/codebase/imgs/");
-            grid.setHeader("First Name, Last Name, Email, Email 2, Phone, Alt. Phone, City");
+            grid.setHeader("First Name, Last Name, Email, Phone, Alt. Phone, City");
             grid.attachHeader("#text_filter, #text_filter"); 
             grid.setColSorting("str,str,str");  
             grid.setInitWidths("100,100,*");
@@ -53,7 +53,7 @@
       }
     </div>
 }    
-<br /><br />
+<br />
 <table>
     <tr>
         <th>
@@ -65,7 +65,6 @@
         <th>
             Email
         </th>
-        <th>Alt. Email</th>
         <th>
             Phone
         </th>
@@ -93,9 +92,6 @@
         </td>
         <td>
             <a href="mailto:@item.PrimaryEmail">@item.PrimaryEmail</a>
-        </td>
-        <td>
-            <a href="mailto:@item.SecondaryEmail">@item.SecondaryEmail</a>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Phone)

@@ -1,5 +1,4 @@
 ﻿@model FlyingClub.WebApp.Models.MemberViewModel
-
 @{
     ViewBag.Title = String.Concat("Member: ", Model.FirstName, " ", Model.LastName);
 }
@@ -8,94 +7,122 @@
 <p>@Html.MvcSiteMap().SiteMapPath()</p>
 
 <fieldset>
-    <legend>Member</legend>
+    <legend>Account Information</legend>
+    <div class="detail-block">
+        <div class="detail-label">@Html.LabelFor(model => model.UserName)</div>
+        <div class="detail-field">
+            @Html.ActionLink(Model.UserName, "Details", "Account", new { Id = Model.LoginId }, null)
+        </div>
 
-    <div class="display-label">UserName</div>
-    <div class="display-field">
-        @Html.ActionLink(Model.UserName, "Details", "Account", new { Id = Model.LoginId }, null)
+        <div class="detail-label">@Html.LabelFor(model => model.MemberPIN)</div>
+        <div class="detail-field">
+            @Html.DisplayFor(model => model.MemberPIN)
+        </div>
+
+        <div class="detail-label">@Html.LabelFor(model => model.Status)</div>
+        <div class="detail-field">
+            @Html.DisplayFor(model => model.Status)
+        </div>
+
+        <div class="detail-label">@Html.LabelFor(model => model.FirstName)</div>
+        <div class="detail-field">
+            @Html.DisplayFor(model => model.FirstName)
+        </div>
+
+        <div class="detail-label">@Html.LabelFor(model => model.LastName)</div>
+        <div class="detail-field">
+            @Html.DisplayFor(model => model.LastName)
+        </div>
     </div>
+</fieldset>
 
-    <div class="display-label">PIN</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.MemberPIN)
+<fieldset>
+    <legend>Contact Information </legend>
+    <div class="detail-block">
+        <div class="detail-label">@Html.LabelFor(model => model.Phone)</div>
+        <div class="detail-field">
+            @Html.DisplayFor(model => model.Phone)
+        </div>
+
+        <div class="detail-label">@Html.LabelFor(model => model.AltPhone)</div>
+        <div class="detail-field">
+            @Html.DisplayFor(model => model.AltPhone)
+        </div>
+
+        <div class="detail-label">@Html.LabelFor(model => model.AddressLine_1)</div>
+        <div class="detail-field">
+            @Html.DisplayFor(model => model.AddressLine_1)
+        </div>
+
+        <div class="detail-label">@Html.LabelFor(model => model.AddressLine_2)</div>
+        <div class="detail-field">
+            @Html.DisplayFor(model => model.AddressLine_2)
+        </div>
+
+        <div class="detail-label">@Html.LabelFor(model => model.City)</div>
+        <div class="detail-field">
+            @Html.DisplayFor(model => model.City)
+        </div>
+
+        <div class="detail-label">@Html.LabelFor(model => model.Zip)</div>
+        <div class="detail-field">
+            @Html.DisplayFor(model => model.Zip)
+        </div>
+
+        <div class="detail-label">@Html.LabelFor(model => model.PrimaryEmail)</div>
+        <div class="detail-field">
+            @Html.DisplayFor(model => model.PrimaryEmail)
+        </div>
+        <div class="detail-label">@Html.LabelFor(model => model.SecondaryEmail)</div>
+        <div class="detail-field">
+            @Html.DisplayFor(model => model.SecondaryEmail)
+        </div>
+        <div class="detail-label">@Html.LabelFor(model => model.Phone)</div>
+        <div class="detail-field">
+            @Html.DisplayFor(model => model.Phone)
+        </div>
+        <div class="detail-label">@Html.LabelFor(model => model.AltPhone)</div>
+        <div class="detail-field">
+            @Html.DisplayFor(model => model.AltPhone)
+        </div>
     </div>
+</fieldset>
 
-    <div class="display-label">Status</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Status)
-    </div>
+<fieldset>
+    <legend>Pilot Information </legend>
+    <div class="detail-block">
+        <div class="detail-label">@Html.LabelFor(model => model.MemberSince)</div>
+        <div class="detail-field">
+            @Html.DisplayFor(model => model.MemberSince)
+        </div>
 
-    <div class="display-label">FirstName</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.FirstName)
-    </div>
+        <div class="detail-label">@Html.LabelFor(model => model.LastMedical)</div>
+        <div class="detail-field">
+            @Html.DisplayFor(model => model.LastMedical)
+        </div>
 
-    <div class="display-label">LastName</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.LastName)
-    </div>
+        <div class="detail-label">@Html.LabelFor(model => model.TotalHours)</div>
+        <div class="detail-field">
+            @Html.DisplayFor(model => model.TotalHours)
+        </div>
 
-    <div class="display-label">Phone</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Phone)
-    </div>
+        <div class="detail-label">@Html.LabelFor(model => model.RetractHours)</div>
+        <div class="detail-field">
+            @Html.DisplayFor(model => model.RetractHours)
+        </div>
 
-    <div class="display-label">AltPhone</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.AltPhone)
-    </div>
+        <div class="detail-label">@Html.LabelFor(model => model.EmergencyName)</div>
+        <div class="detail-field">
+            @Html.DisplayFor(model => model.EmergencyName)
+        </div>
 
-    <div class="display-label">AddressLine_1</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.AddressLine_1)
-    </div>
-
-    <div class="display-label">AddressLine_2</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.AddressLine_2)
-    </div>
-
-    <div class="display-label">City</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.City)
-    </div>
-
-    <div class="display-label">Zip</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Zip)
-    </div>
-
-    <div class="display-label">MemberSince</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.MemberSince)
-    </div>
-
-    <div class="display-label">LastMedical</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.LastMedical)
-    </div>
-
-    <div class="display-label">TotalHours</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TotalHours)
-    </div>
-
-    <div class="display-label">RetractHours</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.RetractHours)
-    </div>
-
-    <div class="display-label">EmergencyName</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.EmergencyName)
-    </div>
-
-    <div class="display-label">EmergencyPhone</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.EmergencyPhone)
+        <div class="detail-label">@Html.LabelFor(model => model.EmergencyPhone)</div>
+        <div class="detail-field">
+            @Html.DisplayFor(model => model.EmergencyPhone)
+        </div>
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
